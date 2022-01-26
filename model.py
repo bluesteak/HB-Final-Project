@@ -44,6 +44,7 @@ class Actor(db.Model):
 
     actor_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     actor_name = db.Column(db.String)
+    
 
     def __repr__(self):
         return f'<Actor actor_id={self.actor_id} actor_name={self.actor_name}>'
