@@ -11,7 +11,6 @@ class Movie(db.Model):
 
     movie_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     movie_title = db.Column(db.String)
-    film_location = db.Column(db.String)
     genre = db.Column(db.String)
     poster = db.Column(db.String)
     watch_link = db.Column(db.String)
@@ -44,12 +43,48 @@ class Actor(db.Model):
 
     actor_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     actor_name = db.Column(db.String)
+    gender = db.Column(db.String)
+    dob = db.Column(db.DateTime)
+    other_name = db.Column(db.String)
+    ethnicity = db.Column(db.String)
+    biography = db.Column(db.Text)
+    headshot = db.Column(db.String)
     
 
     def __repr__(self):
         return f'<Actor actor_id={self.actor_id} actor_name={self.actor_name}>'
 
-def connect_to_db(flask_app, db_uri="postgresql:///actors", echo=True):
+class User(db.Model):
+    """A user."""
+
+    __tablename__ = "users"
+
+    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String)
+    password = db.Column(db.String)
+
+    # ratings = a list of Rating objects
+
+    def __repr__(self):
+        return f"<User user_id={self.user_id} email={self.email}>"
+
+class Rating(db.Model):
+    """A movie rating."""
+
+    __tablename__ = "ratings"
+
+    rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    score = db.Column(db.Integer)
+    movie_id = db.Column(db.Integer, db.ForeignKey("movies.movie_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+
+    movie = db.relationship("Movie", backref="ratings")
+    user = db.relationship("User", backref="ratings")
+
+    def __repr__(self):
+        return f"<Rating rating_id={self.rating_id} score={self.score}>"
+
+def connect_to_db(flask_app, db_uri="postgresql:///movies", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -60,5 +95,5 @@ def connect_to_db(flask_app, db_uri="postgresql:///actors", echo=True):
 
 if __name__ == "__main__":
     from server import app
-
+    print("Connect to db")
     connect_to_db(app)
