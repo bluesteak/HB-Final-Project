@@ -31,6 +31,15 @@ def actors():
     # data = response.json()
     # return data
 
+@app.route("/actor_detail")
+def actor_detail(actor_id):
+ 
+
+ def show_movie(actor_id):
+    """Show details on a particular movie."""
+
+    actor = crud.get_actor_by_id(actor_id)
+    return render_template("actor_detail.html",actor=actor)
 
 
 
