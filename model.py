@@ -5,6 +5,7 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+
 class Movie(db.Model):
     """"A movie."""
     __tablename__ = "movies"
@@ -91,9 +92,8 @@ def connect_to_db(flask_app, db_uri="postgresql:///movies", echo=True):
 
     db.app = flask_app
     db.init_app(flask_app)
-
+    print("Connected to the database")
 
 if __name__ == "__main__":
     from server import app
-    print("Connect to db")
     connect_to_db(app)

@@ -22,11 +22,11 @@ person_id = "1663195"
 #Actor Data
 actor_find = f"https://api.themoviedb.org/3/person/{person_id}?api_key={api_key}&language=en-US"
 response = requests.get(actor_find)
-response = response.json()
+# response = response.json()
     
-#Create json file to view
-with open("actorslist.json","w") as f:
-    json.dump(response, f, indent=4)
+# #Create json file to view
+# with open("actorslist.json","w") as f:
+#     json.dump(response, f, indent=4)
 
 # Get full image link and size for profile picture
 image_base_url = "https://image.tmdb.org/t/p/w45"
@@ -45,9 +45,9 @@ movie_find = f"https://api.themoviedb.org/3/person/{person_id}/movie_credits?api
 response_movie = requests.get(movie_find)
 response_movie = response_movie.json()
     
-#Create json file to view
-with open("movielist.json","w") as f:
-    json.dump(response_movie, f, indent=4)
+# #Create json file to view
+# with open("movielist.json","w") as f:
+#     json.dump(response_movie, f, indent=4)
 
 for num in range(len(response_movie["cast"])):
     db_movie = crud.create_movie(movie_title=response_movie["cast"][num]["original_title"],poster=response_movie["cast"][num]["poster_path"],overview=response_movie["cast"][num]["overview"])

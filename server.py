@@ -1,12 +1,13 @@
 """ Server for Cannes Pineapple movie database app. """
 
 from flask import Flask
-
-from flask import (Flask, render_template, request, flash, session,
-                   redirect)
-
+from flask import (Flask, render_template, request, flash, session, redirect)
+from model import connect_to_db, db
 from jinja2 import StrictUndefined 
+
 import requests
+import crud
+
 app = Flask(__name__)
 app.secret_key = "BakedPineapple"
 app.jinja_env.undefined = StrictUndefined
@@ -18,18 +19,19 @@ def homepage():
     return render_template("homepage.html")
 
 @app.route("/movies")
-def movies():
-    
-    response = requests.get("")
-    data = response.json()
+def all_movies():
+    """View all movies."""
+
+    movies = crud.get_movies()
+    return render_template("all_movies.html", movies=movies)
 
 @app.route("/actors")
-def actors():
- 
-    return render_template("actors.html")
-    # response = requests.get("https://api.themoviedb.org/3/search/person?api_key=ca04f28350cde67bc24470dfe961b3dd&language=en-US&query=nguyen&page=1&include_adult=false")
-    # data = response.json()
-    # return data
+def all_actors():
+    """View all Actors."""
+
+    actors = crud.get_actors()
+    return render_template("all_actors.html", actors=actors)
+
 
 @app.route("/actor_detail")
 def actor_detail(actor_id):
@@ -45,5 +47,5 @@ def actor_detail(actor_id):
 
 
 if __name__ == "__main__":
-
+    connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)

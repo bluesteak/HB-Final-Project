@@ -39,8 +39,19 @@ def create_actor(actor_name,gender,dob,other_name,biography,headshot):
 
 def get_actor_by_id(actor_id):
     """Return a actor by primary key."""
-
     return Actor.query.get(actor_id)
+
+def get_movies():
+    """Return all movies."""
+
+    return Movie.query.all()
+
+def get_actors():
+    """Return all movies."""
+
+    return Actor.query.all()
+
+   
 # def create_rating(user, movie, score):
 #     """Create and return a new rating."""
 
