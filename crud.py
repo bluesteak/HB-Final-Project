@@ -1,22 +1,24 @@
 """CRUD operations."""
 
-from model import db, User, Movie, Rating, Actor, connect_to_db
+from model import db, User, Movie, Rating, Actor, Character, connect_to_db
 
 
-def create_movie(movie_title,poster,genre,watch_link,overview,release_date):
+def create_movie(movie_title,poster,overview):
     """Create and return a new movie."""
 
     movie = Movie(
         movie_title=movie_title,
         poster=poster,
-        genre=genre,
-        watch_link=watch_link,
-        overview=overview,
-        release_date=release_date
+        overview=overview
     )
 
     return movie
 
+def create_character(char_name):
+    """Create and return a character for a movie."""
+    character = Character(char_name=char_name)
+
+    return character
 def create_user(email, password):
     """Create and return a new user."""
 
