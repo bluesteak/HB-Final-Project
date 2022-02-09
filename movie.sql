@@ -246,8 +246,10 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 --
 
 COPY public.actors (actor_id, actor_name, gender, dob, other_name, ethnicity, biography, headshot) FROM stdin;
-1	Kelly Marie Tran	1	1989-01-17 00:00:00	Kelly Tran	\N	Kelly Marie Tran is a Vietnamese-American film actress known for her performances as Rose Tico in Star Wars: The Last Jedi and Star Wars: The Rise of Skywalker. She has also appeared as a part of CollegeHumor Originals, as Margeurite in About a Boy, and as Sara from Life on Normal Street.	https://image.tmdb.org/t/p/w45/2YuymbQfIlaUx8xtAxL5OOCsw6H.jpg
-2	Kelly Marie Tran	1	1989-01-17 00:00:00	Kelly Tran	\N	Kelly Marie Tran is a Vietnamese-American film actress known for her performances as Rose Tico in Star Wars: The Last Jedi and Star Wars: The Rise of Skywalker. She has also appeared as a part of CollegeHumor Originals, as Margeurite in About a Boy, and as Sara from Life on Normal Street.	https://image.tmdb.org/t/p/w45/2YuymbQfIlaUx8xtAxL5OOCsw6H.jpg
+1	Kelly Marie Tran	{gender}	1989-01-17 00:00:00	{"Kelly Tran","Trần Loan ","켈리 마리 트란","트란 로안","Tran Loan"}	\N	Kelly Marie Tran is a Vietnamese-American film actress known for her performances as Rose Tico in Star Wars: The Last Jedi and Star Wars: The Rise of Skywalker. She has also appeared as a part of CollegeHumor Originals, as Margeurite in About a Boy, and as Sara from Life on Normal Street.	https://image.tmdb.org/t/p/w45/2YuymbQfIlaUx8xtAxL5OOCsw6H.jpg
+2	Thalia Tran	{gender}	2007-01-01 00:00:00	{}	\N	Thalia Tran is an actress, known for Little (2019) and Raya and the Last Dragon (2021).	https://image.tmdb.org/t/p/w45/9JTbJ7wVKkVks4XRfyNCem1jFSO.jpg
+3	Kelly Marie Tran	{gender}	1989-01-17 00:00:00	{"Kelly Tran","Trần Loan ","켈리 마리 트란","트란 로안","Tran Loan"}	\N	Kelly Marie Tran is a Vietnamese-American film actress known for her performances as Rose Tico in Star Wars: The Last Jedi and Star Wars: The Rise of Skywalker. She has also appeared as a part of CollegeHumor Originals, as Margeurite in About a Boy, and as Sara from Life on Normal Street.	https://image.tmdb.org/t/p/w45/2YuymbQfIlaUx8xtAxL5OOCsw6H.jpg
+4	Thalia Tran	{gender}	2007-01-01 00:00:00	{}	\N	Thalia Tran is an actress, known for Little (2019) and Raya and the Last Dragon (2021).	https://image.tmdb.org/t/p/w45/9JTbJ7wVKkVks4XRfyNCem1jFSO.jpg
 \.
 
 
@@ -267,17 +269,21 @@ COPY public.characters (char_id, char_name, movie_id, actor_id) FROM stdin;
 9	Rose Tico	\N	\N
 10	Self	\N	\N
 11	Butterfly Girl	\N	\N
-12	Raya (voice)	\N	\N
-13	Dawn Betterman (voice)	\N	\N
-14	Jamie	\N	\N
-15	Rose Tico (voice)	\N	\N
-16	Dawn Betterman (voice)	\N	\N
-17	Kelly	\N	\N
-18	Herself	\N	\N
-19	Rose Tico	\N	\N
-20	Rose Tico	\N	\N
-21	Self	\N	\N
-22	Butterfly Girl	\N	\N
+12	Raina	\N	\N
+13	Little Noi (voice)	\N	\N
+14	Raya (voice)	\N	\N
+15	Dawn Betterman (voice)	\N	\N
+16	Jamie	\N	\N
+17	Rose Tico (voice)	\N	\N
+18	Dawn Betterman (voice)	\N	\N
+19	Kelly	\N	\N
+20	Herself	\N	\N
+21	Rose Tico	\N	\N
+22	Rose Tico	\N	\N
+23	Self	\N	\N
+24	Butterfly Girl	\N	\N
+25	Raina	\N	\N
+26	Little Noi (voice)	\N	\N
 \.
 
 
@@ -297,17 +303,21 @@ COPY public.movies (movie_id, movie_title, genre, poster, watch_link, overview, 
 9	Star Wars: The Rise of Skywalker	\N	/db32LaOibwEliAmSL2jjDF6oDdj.jpg	\N	The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.	\N
 10	The Skywalker Legacy	\N	/lIZzwi4qK3wa5avz3YK0YNDq0ig.jpg	\N	The story lives forever in this feature-length documentary that charts the making of Star Wars: The Rise of Skywalker.	\N
 11	XOXO	\N	/lSWO4dZTqOEGSHffJl4GH3G8Fvp.jpg	\N	XOXO follows six strangers whose lives collide in one frenetic, dream-chasing, hopelessly romantic night.	\N
-12	Raya and the Last Dragon	\N	/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg	\N	Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.	\N
-13	Dear Diary: World's First Pranks	\N	/rSwe3nDvPPjZBjtDTWgzK1t9CP8.jpg	\N	Eep reveals how a comical accident led her and Dawn to discover the joys of tricking their families and set about performing "the world's first pranks."	\N
-14	Untouchable	\N	/u14JtB4CmXAFwnnwB8PEpj1ESsu.jpg	\N	A masseuse's journey to find the human touch.	\N
-15	The Lego Star Wars Holiday Special	\N	/zyzJSI7UZZzz5Toj10rYGF5689z.jpg	\N	As her friends prep for a Life Day holiday celebration, Rey journeys with BB-8 on a quest to gain a deeper knowledge of the Force at a mysterious Jedi Temple. There, she embarks on a cross-timeline adventure through beloved moments in Star Wars history, coming into contact with iconic heroes and villains from all eras of the saga. But will she make it back in time for the Life Day feast?	\N
-16	The Croods: A New Age	\N	/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg	\N	Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.	\N
-17	Andy's CDs	\N	/2jF8YCnHxDLcfpwA4S84hilLRAE.jpg	\N	When Andy is dumped by his girlfriend he must break into his ex's apartment with his ultra nerd best friend, Tyke, in order to reclaim his CD collection.	\N
-18	The Director and the Jedi	\N	/kc19s3pN3gxEcOSM6H20rFlRODo.jpg	\N	An intimate documentary delving into Rian Johnson's process as he comes in as a director new to the Star Wars universe.	\N
-19	Star Wars: The Last Jedi	\N	/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg	\N	Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.	\N
-20	Star Wars: The Rise of Skywalker	\N	/db32LaOibwEliAmSL2jjDF6oDdj.jpg	\N	The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.	\N
-21	The Skywalker Legacy	\N	/lIZzwi4qK3wa5avz3YK0YNDq0ig.jpg	\N	The story lives forever in this feature-length documentary that charts the making of Star Wars: The Rise of Skywalker.	\N
-22	XOXO	\N	/lSWO4dZTqOEGSHffJl4GH3G8Fvp.jpg	\N	XOXO follows six strangers whose lives collide in one frenetic, dream-chasing, hopelessly romantic night.	\N
+12	Little	\N	/4MDB6jJl3U7xK1Gw64zIqt9pQA4.jpg	\N	Jordan Sanders, a take-no-prisoners tech mogul, wakes up one morning in the body of her 13-year-old self right before a do-or-die presentation. Her beleaguered assistant April is the only one in on the secret that her daily tormentor is now trapped in an awkward tween body, just as everything is on the line.	\N
+13	Raya and the Last Dragon	\N	/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg	\N	Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.	\N
+14	Raya and the Last Dragon	\N	/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg	\N	Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.	\N
+15	Dear Diary: World's First Pranks	\N	/rSwe3nDvPPjZBjtDTWgzK1t9CP8.jpg	\N	Eep reveals how a comical accident led her and Dawn to discover the joys of tricking their families and set about performing "the world's first pranks."	\N
+16	Untouchable	\N	/u14JtB4CmXAFwnnwB8PEpj1ESsu.jpg	\N	A masseuse's journey to find the human touch.	\N
+17	The Lego Star Wars Holiday Special	\N	/zyzJSI7UZZzz5Toj10rYGF5689z.jpg	\N	As her friends prep for a Life Day holiday celebration, Rey journeys with BB-8 on a quest to gain a deeper knowledge of the Force at a mysterious Jedi Temple. There, she embarks on a cross-timeline adventure through beloved moments in Star Wars history, coming into contact with iconic heroes and villains from all eras of the saga. But will she make it back in time for the Life Day feast?	\N
+18	The Croods: A New Age	\N	/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg	\N	Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.	\N
+19	Andy's CDs	\N	/2jF8YCnHxDLcfpwA4S84hilLRAE.jpg	\N	When Andy is dumped by his girlfriend he must break into his ex's apartment with his ultra nerd best friend, Tyke, in order to reclaim his CD collection.	\N
+20	The Director and the Jedi	\N	/kc19s3pN3gxEcOSM6H20rFlRODo.jpg	\N	An intimate documentary delving into Rian Johnson's process as he comes in as a director new to the Star Wars universe.	\N
+21	Star Wars: The Last Jedi	\N	/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg	\N	Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.	\N
+22	Star Wars: The Rise of Skywalker	\N	/db32LaOibwEliAmSL2jjDF6oDdj.jpg	\N	The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.	\N
+23	The Skywalker Legacy	\N	/lIZzwi4qK3wa5avz3YK0YNDq0ig.jpg	\N	The story lives forever in this feature-length documentary that charts the making of Star Wars: The Rise of Skywalker.	\N
+24	XOXO	\N	/lSWO4dZTqOEGSHffJl4GH3G8Fvp.jpg	\N	XOXO follows six strangers whose lives collide in one frenetic, dream-chasing, hopelessly romantic night.	\N
+25	Little	\N	/4MDB6jJl3U7xK1Gw64zIqt9pQA4.jpg	\N	Jordan Sanders, a take-no-prisoners tech mogul, wakes up one morning in the body of her 13-year-old self right before a do-or-die presentation. Her beleaguered assistant April is the only one in on the secret that her daily tormentor is now trapped in an awkward tween body, just as everything is on the line.	\N
+26	Raya and the Last Dragon	\N	/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg	\N	Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.	\N
 \.
 
 
@@ -331,21 +341,21 @@ COPY public.users (user_id, email, password) FROM stdin;
 -- Name: actors_actor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
 --
 
-SELECT pg_catalog.setval('public.actors_actor_id_seq', 2, true);
+SELECT pg_catalog.setval('public.actors_actor_id_seq', 4, true);
 
 
 --
 -- Name: characters_char_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
 --
 
-SELECT pg_catalog.setval('public.characters_char_id_seq', 22, true);
+SELECT pg_catalog.setval('public.characters_char_id_seq', 26, true);
 
 
 --
 -- Name: movies_movie_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
 --
 
-SELECT pg_catalog.setval('public.movies_movie_id_seq', 22, true);
+SELECT pg_catalog.setval('public.movies_movie_id_seq', 26, true);
 
 
 --
