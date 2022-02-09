@@ -18,15 +18,16 @@ model.connect_to_db(server.app)
 model.db.create_all()
 
 #The list of TMDB id for actor
-person_id = "1663195"
+personid_list = ["1663195","2782707"]
 #Actor Data
-actor_find = f"https://api.themoviedb.org/3/person/{person_id}?api_key={api_key}&language=en-US"
-response = requests.get(actor_find)
-# response = response.json()
-    
-# #Create json file to view
-# with open("actorslist.json","w") as f:
-#     json.dump(response, f, indent=4)
+for person in personid_list:
+    actor_find = f"https://api.themoviedb.org/3/person/{person}?api_key={api_key}&language=en-US"
+    response = requests.get(actor_find)
+    response = response.json()
+  #Create json file to view
+    with open("actorslist.json","w") as f:
+        json.dump(response, f, indent=4)  
+
 
 # Get full image link and size for profile picture
 image_base_url = "https://image.tmdb.org/t/p/w45"
@@ -34,32 +35,33 @@ profile_url = image_base_url + response["profile_path"]
 response["profile_path"] = profile_url
 
 # Seed actor database to database
-db_actor = crud.create_actor(actor_name=response["name"],gender=str(response["gender"]),dob=response["birthday"],other_name=response["also_known_as"][0],biography=response["biography"],headshot=response["profile_path"])
-model.db.session.add(db_actor)
-model.db.session.commit()
+for i in response:
+    db_actor = crud.create_actor(actor_name=response[i]["name"])
+    model.db.session.add(db_actor)
+    model.db.session.commit()
 
 #Create a movie
 
-movie_find = f"https://api.themoviedb.org/3/person/{person_id}/movie_credits?api_key={api_key}&language=en-US"
+# movie_find = f"https://api.themoviedb.org/3/person/{person_id}/movie_credits?api_key={api_key}&language=en-US"
 
-response_movie = requests.get(movie_find)
-response_movie = response_movie.json()
+# response_movie = requests.get(movie_find)
+# response_movie = response_movie.json()
     
-# #Create json file to view
-# with open("movielist.json","w") as f:
-#     json.dump(response_movie, f, indent=4)
+# # #Create json file to view
+# # with open("movielist.json","w") as f:
+# #     json.dump(response_movie, f, indent=4)
 
-for num in range(len(response_movie["cast"])):
-    db_movie = crud.create_movie(movie_title=response_movie["cast"][num]["original_title"],poster=response_movie["cast"][num]["poster_path"],overview=response_movie["cast"][num]["overview"])
-    model.db.session.add(db_movie)
-    model.db.session.commit()
+# for num in range(len(response_movie["cast"])):
+#     db_movie = crud.create_movie(movie_title=response_movie["cast"][num]["original_title"],poster=response_movie["cast"][num]["poster_path"],overview=response_movie["cast"][num]["overview"])
+#     model.db.session.add(db_movie)
+#     model.db.session.commit()
 
 
-#Create a character
-for num in range(len(response_movie["cast"])):
-    db_character = crud.create_character(char_name=response_movie["cast"][num]["character"])
-    model.db.session.add(db_character)
-    model.db.session.commit()
+# #Create a character
+# for num in range(len(response_movie["cast"])):
+#     db_character = crud.create_character(char_name=response_movie["cast"][num]["character"])
+#     model.db.session.add(db_character)
+#     model.db.session.commit()
 
 
 # for n in range(5):

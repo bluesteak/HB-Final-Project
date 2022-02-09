@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Cannes Pineapple {% endblock %}
+
+{% block body %}
+
+  <h2>The list of Actors</h2>
+  {% for actor in actors %}
+  <li>
+      {{ actor.actor_name }}
+  </li>
+{% endfor %}
+{% endblock %}
