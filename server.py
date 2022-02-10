@@ -10,6 +10,7 @@ import crud
 
 app = Flask(__name__)
 app.secret_key = "BakedPineapple"
+
 app.jinja_env.undefined = StrictUndefined
 
 #HomePage

@@ -9,8 +9,9 @@ from random import choice, randint
 import model
 import server
 import crud
-api_key = "ca04f28350cde67bc24470dfe961b3dd"
 
+API = os.environ["TMDB_KEY"]
+api_key = API
 os.system("dropdb movies")
 os.system("createdb movies")
 model.connect_to_db(server.app)
