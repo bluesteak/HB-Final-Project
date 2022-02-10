@@ -7,9 +7,10 @@ from jinja2 import StrictUndefined
 
 import requests
 import crud
+import os
 
 app = Flask(__name__)
-app.secret_key = "BakedPineapple"
+app.secret_key = os.environ["SECRET_KEY"]
 
 app.jinja_env.undefined = StrictUndefined
 
