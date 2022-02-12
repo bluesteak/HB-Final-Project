@@ -1,10 +1,14 @@
 
-# from flask_sqlalchemy import SQLAlchemy
-# from datetime import datetime
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
-# import requests
-# import json
-# import crud
+import requests
+import json
+import crud
+from seed_database import movie_list
+print(movie_list)
+
+
 # api_key = "ca04f28350cde67bc24470dfe961b3dd"
 # #The list of TMDB id for actor
 # personid_list = ["1663195","2782707"]

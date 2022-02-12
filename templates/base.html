@@ -2,16 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" 
+    content="width=device-width">
+    <!--Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;0,800;1,300;1,400&display=swap" rel="stylesheet">
+      <!-- CSS -->
+    <link rel="stylesheet" href=/static/style.css>
     <title>
-      {% block title %}{% endblock %}
+      {% block title %}
+      {% endblock %}
     </title>
 
     {% block head %}{% endblock %}
   </head>
   <body>
     {% block body %}{% endblock %}
+    <div class="nav-wrapper">
+        <div class="container">
+          <div class="nav">
+            <a href="#" class="logo">
+              <img src="/static/img/cannes1.png" alt=""/>
 
+          <ul class = "nav-menu" id = "nav-menu">
+              <li><a href="/"></a></li>
+              <li><a href="/">Homepage</a></li>
+              <li><a href="/movies">Movie</a></li>
+              <li><a href="/actors">Actor</a></li>
+              <li><a href="#">About Us</a></li>
+            
+            <!-- <li>
+              <a href="#" class="sign-in">
+                <span>Log In</span>
+              </a>
+            </li> -->
+
+
+          </ul>
+            </a>
+          </div>
+
+
+
+        </div>
+
+
+    </div>
     {% block after_body %}{% endblock %}
   </body>
 </html>
