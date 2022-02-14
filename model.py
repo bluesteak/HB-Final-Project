@@ -51,7 +51,7 @@ class Character(db.Model):
     actor = db.relationship("Actor",backref="characters")
 
     def __repr__(self):
-        return f'<Character id={self.id} char_name={self.char_name}>'
+        return f'<Character id={self.id} char_name={self.char_name} movie={self.movie} actor={self.actor}>'
 
 class User(db.Model):
     """A user."""
@@ -83,7 +83,7 @@ class Rating(db.Model):
     def __repr__(self):
         return f"<Rating rating_id={self.rating_id} score={self.score}>"
 
-def connect_to_db(flask_app, db_uri="postgresql:///movies", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///movies", echo=False):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

@@ -11,10 +11,10 @@ def create_movie(movie_title,poster,overview,tmdb_id):
         overview=overview,
         tmdb_id=tmdb_id
     )
+    db.session.add(movie)
+    db.session.commit()
     return movie
-    if tmdb_id != tmdb_id:
-        model.db.session.add(movie)
-        model.db.session.commit()
+   
             
 #get movie_id
 #create character from movie_id
@@ -22,6 +22,7 @@ def create_character(char_name,actor,movie):
     """Create and return a character for a movie."""
     character = Character(char_name=char_name,actor=actor,movie=movie)
     db.session.add(character)
+    print("Adding character",character)
     db.session.commit()
     return character
 
@@ -38,12 +39,15 @@ def create_actor(actor_name,gender,dob,other_name,biography,headshot):
     db.session.commit()  
     return actor
 
-def get_actor_by_id(actor_id):
+def get_actor_by_id(id):
     """Return a actor by primary key."""
-    return Actor.query.get(actor_id)
+    return Actor.query.get(id)
 
 def get_movie_by_id(id):
     return Movie.query.get(id)
+
+def get_movie_by_tmdb(tmdb_id):
+    return Movie.query.get(tmdb_id)
 
 def get_movies():
     """Return all movies."""

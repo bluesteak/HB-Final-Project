@@ -1,0 +1,353 @@
+{
+    "cast": [
+        {
+            "genre_ids": [
+                10751,
+                14,
+                16,
+                28,
+                12
+            ],
+            "original_language": "en",
+            "original_title": "Raya and the Last Dragon",
+            "poster_path": "/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg",
+            "video": false,
+            "vote_average": 8.0,
+            "id": 527774,
+            "overview": "Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it\u2019s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.",
+            "release_date": "2021-03-03",
+            "vote_count": 4932,
+            "adult": false,
+            "backdrop_path": "/rcUcYzGGicDvhDs58uM44tJKB9F.jpg",
+            "title": "Raya and the Last Dragon",
+            "popularity": 335.253,
+            "character": "Raya (voice)",
+            "credit_id": "5f47db6f813cb600358c77aa",
+            "order": 0
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4lqYOx6UuxFOec9FDVAhNTmEUjK.jpg",
+            "genre_ids": [
+                16,
+                35,
+                10751
+            ],
+            "id": 801876,
+            "original_language": "en",
+            "original_title": "Dear Diary: World's First Pranks",
+            "overview": "Eep reveals how a comical accident led her and Dawn to discover the joys of tricking their families and set about performing \"the world's first pranks.\"",
+            "poster_path": "/rSwe3nDvPPjZBjtDTWgzK1t9CP8.jpg",
+            "release_date": "2021-02-09",
+            "title": "Dear Diary: World's First Pranks",
+            "video": false,
+            "vote_average": 5.3,
+            "vote_count": 6,
+            "popularity": 4.546,
+            "character": "Dawn Betterman (voice)",
+            "credit_id": "60687e200d2f530057a34135",
+            "order": 1
+        },
+        {
+            "id": 468301,
+            "video": false,
+            "vote_count": 1,
+            "vote_average": 5.0,
+            "title": "Untouchable",
+            "release_date": "2011-06-01",
+            "original_language": "en",
+            "original_title": "Untouchable",
+            "genre_ids": [
+                35,
+                18
+            ],
+            "backdrop_path": null,
+            "adult": false,
+            "overview": "A masseuse's journey to find the human touch.",
+            "poster_path": "/u14JtB4CmXAFwnnwB8PEpj1ESsu.jpg",
+            "popularity": 0.6,
+            "character": "Jamie",
+            "credit_id": "597a70449251412398000b1b",
+            "order": 3
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/1Lhc32P0a62BgMFgd20wXR1osR3.jpg",
+            "genre_ids": [
+                16,
+                10751,
+                12,
+                35,
+                878
+            ],
+            "vote_count": 226,
+            "original_language": "en",
+            "original_title": "The Lego Star Wars Holiday Special",
+            "poster_path": "/zyzJSI7UZZzz5Toj10rYGF5689z.jpg",
+            "title": "The Lego Star Wars Holiday Special",
+            "video": false,
+            "vote_average": 6.8,
+            "release_date": "2020-11-17",
+            "overview": "As her friends prep for a Life Day holiday celebration, Rey journeys with BB-8 on a quest to gain a deeper knowledge of the Force at a mysterious Jedi Temple. There, she embarks on a cross-timeline adventure through beloved moments in Star Wars history, coming into contact with iconic heroes and villains from all eras of the saga. But will she make it back in time for the Life Day feast?",
+            "id": 732670,
+            "popularity": 35.171,
+            "character": "Rose Tico (voice)",
+            "credit_id": "5f88c25bd4b9d900372c6dbe",
+            "order": 3
+        },
+        {
+            "genre_ids": [
+                16,
+                10751,
+                12,
+                14,
+                35
+            ],
+            "original_language": "en",
+            "original_title": "The Croods: A New Age",
+            "poster_path": "/tbVZ3Sq88dZaCANlUcewQuHQOaE.jpg",
+            "video": false,
+            "vote_average": 7.6,
+            "overview": "Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.",
+            "release_date": "2020-11-25",
+            "vote_count": 2841,
+            "title": "The Croods: A New Age",
+            "adult": false,
+            "backdrop_path": "/fmIp40ev4VGquK2bMo52PQgaV2d.jpg",
+            "id": 529203,
+            "popularity": 296.821,
+            "character": "Dawn Betterman (voice)",
+            "credit_id": "5db930e20f2fbd001775dfa8",
+            "order": 5
+        },
+        {
+            "adult": false,
+            "backdrop_path": null,
+            "genre_ids": [],
+            "id": 468898,
+            "original_language": "en",
+            "original_title": "Andy's CDs",
+            "overview": "When Andy is dumped by his girlfriend he must break into his ex's apartment with his ultra nerd best friend, Tyke, in order to reclaim his CD collection.",
+            "poster_path": "/2jF8YCnHxDLcfpwA4S84hilLRAE.jpg",
+            "release_date": "2013-01-18",
+            "title": "Andy's CDs",
+            "video": true,
+            "vote_average": 6.8,
+            "vote_count": 2,
+            "popularity": 0.95,
+            "character": "Kelly",
+            "credit_id": "597f97b5c3a368540803a9a4",
+            "order": 7
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/89GDvaEtKREETMU1ENQgXIWYrVH.jpg",
+            "genre_ids": [
+                99
+            ],
+            "id": 510714,
+            "original_language": "en",
+            "original_title": "The Director and the Jedi",
+            "overview": "An intimate documentary delving into Rian Johnson's process as he comes in as a director new to the Star Wars universe.",
+            "poster_path": "/kc19s3pN3gxEcOSM6H20rFlRODo.jpg",
+            "release_date": "2018-03-12",
+            "title": "The Director and the Jedi",
+            "video": false,
+            "vote_average": 7.4,
+            "vote_count": 36,
+            "popularity": 5.497,
+            "character": "Herself",
+            "credit_id": "5adf479c925141132e00c56a",
+            "order": 8
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/5Iw7zQTHVRBOYpA0V6z0yypOPZh.jpg",
+            "genre_ids": [
+                878,
+                28,
+                12
+            ],
+            "id": 181808,
+            "original_language": "en",
+            "original_title": "Star Wars: The Last Jedi",
+            "overview": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.",
+            "poster_path": "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+            "release_date": "2017-12-13",
+            "title": "Star Wars: The Last Jedi",
+            "video": false,
+            "vote_average": 6.9,
+            "vote_count": 12719,
+            "popularity": 86.225,
+            "character": "Rose Tico",
+            "credit_id": "582bfd2a92514111b7004391",
+            "order": 11
+        },
+        {
+            "title": "Star Wars: The Rise of Skywalker",
+            "vote_average": 6.5,
+            "overview": "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
+            "release_date": "2019-12-18",
+            "adult": false,
+            "backdrop_path": "/SPkEiZGxq5aHWQ2Zw7AITwSEo2.jpg",
+            "vote_count": 7506,
+            "genre_ids": [
+                28,
+                12,
+                878
+            ],
+            "video": false,
+            "original_language": "en",
+            "original_title": "Star Wars: The Rise of Skywalker",
+            "poster_path": "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
+            "id": 181812,
+            "popularity": 87.614,
+            "character": "Rose Tico",
+            "credit_id": "5b5f42689251414fb800115b",
+            "order": 13
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/zp4c8WEBGSic6ydxOnzuFwEGdi8.jpg",
+            "genre_ids": [
+                99
+            ],
+            "id": 680382,
+            "original_language": "en",
+            "original_title": "The Skywalker Legacy",
+            "overview": "The story lives forever in this feature-length documentary that charts the making of Star Wars: The Rise of Skywalker.",
+            "poster_path": "/lIZzwi4qK3wa5avz3YK0YNDq0ig.jpg",
+            "release_date": "2020-03-18",
+            "title": "The Skywalker Legacy",
+            "video": false,
+            "vote_average": 7.8,
+            "vote_count": 37,
+            "popularity": 9.256,
+            "character": "Self",
+            "credit_id": "5e5f4db0303c8500173e4453",
+            "order": 14
+        },
+        {
+            "video": false,
+            "overview": "XOXO follows six strangers whose lives collide in one frenetic, dream-chasing, hopelessly romantic night.",
+            "release_date": "2016-08-26",
+            "vote_count": 547,
+            "vote_average": 6.0,
+            "adult": false,
+            "backdrop_path": "/8veRW9Hb3cQZgAy28gqvJVo34O1.jpg",
+            "title": "XOXO",
+            "genre_ids": [
+                10402,
+                18
+            ],
+            "id": 352492,
+            "original_language": "en",
+            "original_title": "XOXO",
+            "poster_path": "/lSWO4dZTqOEGSHffJl4GH3G8Fvp.jpg",
+            "popularity": 15.676,
+            "character": "Butterfly Girl",
+            "credit_id": "57a84429c3a36826c600495b",
+            "order": 20
+        }
+    ],
+    "crew": [
+        {
+            "overview": "Follow 20-year-old Lily Hevesh \u2014 the world\u2019s greatest domino toppler and the only woman in her field \u2014 in a coming-of-age story of artistry, passion, and unlikely triumph.",
+            "release_date": "2021-03-16",
+            "adult": false,
+            "backdrop_path": null,
+            "vote_count": 5,
+            "genre_ids": [
+                99
+            ],
+            "id": 795625,
+            "original_language": "en",
+            "original_title": "Lily Topples The World",
+            "poster_path": "/dgxLTkwTPo8a8EDKcLgpiSDn0zF.jpg",
+            "title": "Lily Topples The World",
+            "video": false,
+            "vote_average": 8.4,
+            "popularity": 3.314,
+            "credit_id": "60521f8774507d0028fc8e59",
+            "department": "Production",
+            "job": "Executive Producer"
+        },
+        {
+            "release_date": "2021-07-09",
+            "adult": false,
+            "backdrop_path": "/290KSkMot01u58yCCa6lFqtpXaq.jpg",
+            "genre_ids": [
+                35,
+                18,
+                10402
+            ],
+            "vote_count": 14,
+            "original_language": "en",
+            "original_title": "Summertime",
+            "poster_path": "/eA3ijMatNICwg6gCGhovcdIBukj.jpg",
+            "id": 653715,
+            "video": false,
+            "vote_average": 7.3,
+            "title": "Summertime",
+            "overview": "Over the course of a hot summer day in Los Angeles, the lives of 25 young Angelinos intersect. A skating guitarist, a tagger, two wannabe rappers, an exasperated fast-food worker, a limo driver\u2014they all weave in and out of each other's stories. Through poetry they express life, love, heartache, family, home, and fear. One of them just wants to find someplace that still serves good cheeseburgers.",
+            "popularity": 2.431,
+            "credit_id": "60760ac23f4833002972fd5a",
+            "department": "Production",
+            "job": "Executive Producer"
+        }
+    ],
+    "id": 1663195
+}{
+    "cast": [
+        {
+            "original_title": "Little",
+            "id": 526050,
+            "video": false,
+            "vote_average": 6.8,
+            "overview": "Jordan Sanders, a take-no-prisoners tech mogul, wakes up one morning in the body of her 13-year-old self right before a do-or-die presentation. Her beleaguered assistant April is the only one in on the secret that her daily tormentor is now trapped in an awkward tween body, just as everything is on the line.",
+            "release_date": "2019-04-04",
+            "vote_count": 537,
+            "adult": false,
+            "backdrop_path": "/2hhZZCbLllEwcED7S9yLIA6j6aZ.jpg",
+            "title": "Little",
+            "genre_ids": [
+                35,
+                14,
+                10749
+            ],
+            "poster_path": "/4MDB6jJl3U7xK1Gw64zIqt9pQA4.jpg",
+            "original_language": "en",
+            "popularity": 25.017,
+            "character": "Raina",
+            "credit_id": "5f6414c2156cc70035eb21f5",
+            "order": 7
+        },
+        {
+            "genre_ids": [
+                10751,
+                14,
+                16,
+                28,
+                12
+            ],
+            "original_language": "en",
+            "original_title": "Raya and the Last Dragon",
+            "poster_path": "/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg",
+            "video": false,
+            "vote_average": 8.1,
+            "id": 527774,
+            "overview": "Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it\u2019s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.",
+            "release_date": "2021-03-03",
+            "vote_count": 4928,
+            "adult": false,
+            "backdrop_path": "/rcUcYzGGicDvhDs58uM44tJKB9F.jpg",
+            "title": "Raya and the Last Dragon",
+            "popularity": 349.99,
+            "character": "Little Noi (voice)",
+            "credit_id": "601021230816c700407db581",
+            "order": 8
+        }
+    ],
+    "crew": [],
+    "id": 2782707
+}
