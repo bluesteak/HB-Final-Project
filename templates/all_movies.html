@@ -4,9 +4,12 @@
 {% block body %}
 
   <h2>The list of Movies</h2>
+<ul>
   {% for movie in movies %}
-  <li>
-      {{ movie.movie_title }}
-  </li>
+  <li> {{ movie.movie_title }} </li>
+  <li><img src="{{ movie.poster }}"></li>
+  <li>{{ movie.overview }}</li>
+
 {% endfor %}
+</ul>
 {% endblock %}

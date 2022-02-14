@@ -4,9 +4,13 @@
 {% block body %}
 
   <h2>The list of Actors</h2>
+<ul>
   {% for actor in actors %}
-  <li>
-      {{ actor.actor_name }}
-  </li>
+  <li> {{ actor.actor_name }}</li>
+  <li><img src="{{ actor.headshot }}"></li>
+  <li>{{ actor.biography }}</li>
+
+
 {% endfor %}
+</ul>
 {% endblock %}
