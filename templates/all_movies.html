@@ -6,7 +6,7 @@
   <h2>The list of Movies</h2>
 <ul>
   {% for movie in movies %}
-  <li> {{ movie.movie_title }} </li>
+  <li><a href="/movies/{{ movie.id }}">{{ movie.movie_title }} </a><li>
   <li><img src="{{ movie.poster }}"></li>
   <li>{{ movie.overview }}</li>
 

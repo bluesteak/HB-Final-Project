@@ -35,18 +35,31 @@ def all_actors():
     return render_template("all_actors.html", actors=actors)
 
 
-@app.route("/actor_detail")
-def actor_detail(actor_id):
- 
-
- def show_movie(actor_id):
-    """Show details on a particular movie."""
-
-    actor = crud.get_actor_by_id(actor_id)
+@app.route("/actors/<id>")
+def actor_detail(id):
+    actor = crud.get_actor_by_id(id)
     return render_template("actor_detail.html",actor=actor)
 
+@app.route("/movies/<id>")
+def movie_detail(id):
+    movie = crud.get_movie_by_id(id)
+    return render_template("movie_detail.html",movie=movie)
 
+@app.route("/login", methods=["POST"])
+def login():
 
+    email = request.form.get("email")
+    password = request.form.get("password")
+    user = crud.get_user_by_email(email)
+    #Check for correct email/password and flash message
+    if not user or user.password != password:
+        flash("Wrong email or password")
+    #if correct, login user
+    else: 
+        session["user_email"] = user.email
+        flash(f"Welcome Back, {user.email}!")
+        
+    return redirect("/")
 
 if __name__ == "__main__":
     connect_to_db(app)

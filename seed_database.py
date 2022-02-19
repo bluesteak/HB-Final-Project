@@ -32,7 +32,7 @@ for person in person_list:
 
 
     # Get full image link and size for profile picture
-    image_base_url = "https://image.tmdb.org/t/p/w45"
+    image_base_url = "https://image.tmdb.org/t/p/w185"
     profile_url = image_base_url + response["profile_path"]
     response["profile_path"] = profile_url
 

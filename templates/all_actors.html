@@ -6,11 +6,14 @@
   <h2>The list of Actors</h2>
 <ul>
   {% for actor in actors %}
-  <li> {{ actor.actor_name }}</li>
-  <li><img src="{{ actor.headshot }}"></li>
+  
+  <a href="/actors/{{ actor.id }}"> <li> {{ actor.actor_name }}</a></li>
+
   <li>{{ actor.biography }}</li>
+  <li><img src="{{ actor.headshot }}"></li>
+  <li></li>
 
-
+  
 {% endfor %}
 </ul>
 {% endblock %}
