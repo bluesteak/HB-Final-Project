@@ -49,6 +49,14 @@ for person in person_list:
     for num in range(len(response_movie["cast"])):
         poster_base_url = "https://image.tmdb.org/t/p/w500"
         # movie_list = []
+        print("Here is the tmdb id:")
+        print(response_movie["cast"][num]["id"])
+        movie = crud.get_movie_by_tmdb(int(response_movie["cast"][num]["id"]))
+        print()
+        print()
+        print(movie)
+        if movie:
+                continue
         db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"])
      
      
