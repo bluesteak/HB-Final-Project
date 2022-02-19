@@ -51,7 +51,7 @@ for person in person_list:
         # movie_list = []
         print("Here is the tmdb id:")
         print(response_movie["cast"][num]["id"])
-        movie = crud.get_movie_by_tmdb(int(response_movie["cast"][num]["id"]))
+        movie = crud.get_movie_by_tmdb(response_movie["cast"][num]["id"])
         print()
         print()
         print(movie)
@@ -59,11 +59,20 @@ for person in person_list:
                 continue
         db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"])
      
-     
+
+
         print("Add movie to db",db_movie)
+
+
+        #Create a character
+        
         db_character = crud.create_character(char_name=response_movie["cast"][num]["character"],actor=db_actor,movie=db_movie)
 
-    
+
+    #Check if movie in database
+    #If not in database, create movie
+    #At the same time, create characer with the 
+
 # for i in range(10):
 #     movie=crud.get_movie_by_id(f"{i}")
 #     db_character = crud.create_character(char_name=response_movie["cast"][num]["character"],actor=db_actor,movie=movie)

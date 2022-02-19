@@ -47,7 +47,7 @@ def get_movie_by_id(id):
     return Movie.query.get(id)
 
 def get_movie_by_tmdb(tmdb_id):
-    return Movie.query.get(tmdb_id)
+    return Movie.query.filter_by(tmdb_id=str(tmdb_id)).first()
 
 def get_movies():
     """Return all movies."""
