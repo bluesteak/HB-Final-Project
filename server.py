@@ -1,7 +1,11 @@
 """ Server for Cannes Pineapple movie database app. """
 
 from flask import Flask
-from flask import (Flask, render_template, request, flash, session, redirect)
+from flask import (Flask, render_template, request, flash, session, redirect,url_for)
+from flask import jsonify
+
+
+
 from model import connect_to_db, db
 from jinja2 import StrictUndefined 
 
@@ -73,31 +77,31 @@ def create_rating(movie_id):
     return redirect(f"/movies/{movie_id}")    
 
 @app.route("/signup")
-def show_signup_page():
+def register():
     """Show sign up page and term&conditions"""
-    return render_template("signup.html")
+    return render_template("register.html")
 
-@app.route("/signup", methods=["POST"])
-def register_user():
-    """Create a new user"""
-    name = request.form.get("name")
-    email = request.form.get("email")
-    password = request.form.get("password")
-    user = crud.get_user_by_email(email)
+# @app.route("/signup", methods=["POST"])
+# def register_user():
+#     """Create a new user"""
+#     name = request.form.get("name")
+#     email = request.form.get("email")
+#     password = request.form.get("password")
+#     user = crud.get_user_by_email(email)
     
-    #Check if account exists, flash message for True
-    if user:
-        flash("Account already exists. Please try another email.")
-    #If False, create a new account
-    else:
-        user = crud.create_user(email, password, name)
-        flash("Congratulations! You account has been create. Please log in")
-    return redirect("/")
+#     #Check if account exists, flash message for True
+#     if user:
+#         flash("Account already exists. Please try another email.")
+#     #If False, create a new account
+#     else:
+#         user = crud.create_user(email, password, name)
+#         flash("Congratulations! You account has been create. Please log in")
+#     return redirect("/")
 
 @app.route("/login")
-def show_login_page():
-    """Show log in form for return user"""
+def login():
     return render_template("login.html")
+
 
 @app.route("/login",methods=["POST"])
 def login_user():
@@ -118,9 +122,7 @@ def login_user():
         session["user_id"] = user.user_id
 
         flash(f"Welcome Back, {user.name}!")
-        print("*************")
-        print(request.referrer)
-    return redirect(request.referrer)
+    return redirect("/")
 
 
 @app.route("/users")
@@ -146,8 +148,8 @@ def show_user(user_id):
 @app.route("/logout")
 def logout():
     """Log and and delete session"""
-    del session["login"]
-    del session["user_email"]
+    del session["user_id"]
+
     flash("You've logged out!")
     return redirect("/")
 

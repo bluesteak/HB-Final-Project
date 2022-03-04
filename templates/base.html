@@ -10,6 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;0,800;1,300;1,400&display=swap" rel="stylesheet">
       <!-- CSS -->
     <link rel="stylesheet" href=/static/style.css>
+    <!-- Assessment file -->
+
+    <script src="/static/register.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jQuery script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>
       {% block title %}
       {% endblock %}
@@ -18,7 +25,17 @@
     {% block head %}{% endblock %}
   </head>
   <body>
-    {% block body %}{% endblock %}
+    {% block body %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <p class="flash">
+      <li>{{ message }}</li>
+      </p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+    {% endblock %}
     <div class="nav-wrapper">
         <div class="container">
           <div class="nav">
@@ -31,26 +48,27 @@
               <li><a href="/movies">Movie</a></li>
               <li><a href="/actors">Actor</a></li>
               <li><a href="#">About Us</a></li>
-              <li><a href="/login">Login</a></li>
-              <!--write a jinja if stataement-->
-            <!-- <li>
-              <a href="#" class="sign-in">
-                <span>Log In</span>
-              </a>
-            </li> -->
 
+              {% if 'user_id' not in session %}
+              <li><a href="{{url_for('login')}}">Login</a></li>
 
+              {% else %}
+              <li><a href= "/users/{{ session["user_id"] }}">Your Account</a></li>
+              <li><a href="/logout">Log Out</a></li>
+              <!-- ("/logout") -->
+            {% endif %}
           </ul>
-            </a>
+              <!--write a jinja if stataement-->
+          
+        
+            <!-- </a> -->
           </div>
 
 
 
         </div>
         
- <!-- Assessment file -->
 
- <script src="/static/register.js"></script>
     </div>
     {% block after_body %}{% endblock %}
   </body>
