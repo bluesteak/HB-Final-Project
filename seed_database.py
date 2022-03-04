@@ -19,8 +19,8 @@ model.connect_to_db(server.app)
 model.db.create_all()
 
 #The list of TMDB id for actor
-person_list = ["1663195","2782707"]
-
+person_list = ["2782707","1652045"]
+#kelly "1663195"
 #Actor Data
 for person in person_list:
     print("Searching for person",person)
@@ -38,7 +38,6 @@ for person in person_list:
 
     #Add actor to database
     db_actor = crud.create_actor(actor_name=response["name"],dob=response["birthday"],gender=["gender"],other_name=response["also_known_as"],biography=response["biography"],headshot=response["profile_path"])
-    
   
     #Get movie detail
     movie_find = f"https://api.themoviedb.org/3/person/{person}/movie_credits?api_key={api_key}&language=en-US"
@@ -52,46 +51,38 @@ for person in person_list:
         print("Here is the tmdb id:")
         print(response_movie["cast"][num]["id"])
         movie = crud.get_movie_by_tmdb(response_movie["cast"][num]["id"])
-        print()
-        print()
-        print(movie)
         if movie:
-                continue
-        db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"])
-     
+                db_character = crud.create_character(char_name=response_movie["cast"][num]["character"], actor=db_actor, movie=movie)
+        else:
+                db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"],release_date=response_movie["cast"][num]["release_date"])
+                print("Add movie to db",db_movie)
 
+                db_character = crud.create_character(char_name=response_movie["cast"][num]["character"],actor=db_actor,movie=db_movie)
 
-        print("Add movie to db",db_movie)
+#Adding missing data to Actor Database
+id_list = [1,2]
+for id in id_list:
+        crud.updateActor(id).ethnicity = "Vietnamese"
+        model.db.session.commit()
 
+#Create test users:
+for n in range(3):
+        email = f"user{n}@test.com"  # Voila! A unique email!
+        password = f"Testing{n}"
+        name = f"Pineapple{n}"
 
-        #Create a character
+        user = crud.create_user(email, password, name)
+        model.db.session.add(user)
+        print("add user to db",user)
+
+        for i in range(5):
+                random_movie = crud.get_movie_by_id(i)
+                score = 5
+
+                rating = crud.create_rating(user, random_movie, score)
+                model.db.session.add(rating)
         
-        db_character = crud.create_character(char_name=response_movie["cast"][num]["character"],actor=db_actor,movie=db_movie)
-
-
-    #Check if movie in database
-    #If not in database, create movie
-    #At the same time, create characer with the 
-
-# for i in range(10):
-#     movie=crud.get_movie_by_id(f"{i}")
-#     db_character = crud.create_character(char_name=response_movie["cast"][num]["character"],actor=db_actor,movie=movie)
-#     model.db.session.add(db_character)
-#     model.db.session.commit()
-            # print(db_movie)
-
-            # movie_list.append(db_smovie)
-                
-            
-    #Get character and add to database:
-
-            # for movie in movies_list:
-
-
-    # 
-    # print(db_character)
-    
-
+        model.db.session.commit()
 
 
 

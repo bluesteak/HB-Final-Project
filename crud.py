@@ -3,13 +3,14 @@
 from model import db, User, Movie, Rating, Actor, Character, connect_to_db
 
 
-def create_movie(movie_title,poster,overview,tmdb_id):
+def create_movie(movie_title,poster,overview,tmdb_id,release_date):
     """Create and return a new movie."""
     movie = Movie(
         movie_title=movie_title,
         poster=poster,
         overview=overview,
-        tmdb_id=tmdb_id
+        tmdb_id=tmdb_id,
+        release_date=release_date
     )
     db.session.add(movie)
     db.session.commit()
@@ -39,9 +40,17 @@ def create_actor(actor_name,gender,dob,other_name,biography,headshot):
     db.session.commit()  
     return actor
 
+def create_rating(user,movie, score):
+    rating = Rating(user=user,movie=movie,score=score)
+    return rating
+
 def get_actor_by_id(id):
     """Return a actor by primary key."""
     return Actor.query.get(id)
+
+def get_character_by_actor_id(actor_id):
+    """Return a actor by primary key."""
+    return Character.query.get(actor_id)
 
 def get_movie_by_id(id):
     return Movie.query.get(id)
@@ -59,29 +68,52 @@ def get_actors():
 
     return Actor.query.all()
 
+def get_characters_from_actor(id):
+    """Return all characters by actor Id."""
 
-def create_user(email, password):
+    return Character.query.filter_by(actor_id=id)
+
+
+def create_user(email, password, name):
     """Return a new user."""
 
-    user = User(email=email, password=password)
-
+    user = User(email=email, password=password,name=name)
+    db.session.add(user)
+    db.session.commit()
     return user
 
+def check_user(email,password):
+    """ Check if user email or password is correct"""
+    user = User.query.filter_by(email=email, password=password).first()
 
-def create_rating(user, movie, score):
-    """Return a new rating."""
-
-    rating = Rating(user=user, movie=movie, score=score)
-
-    return rating
-# def create_rating(user, movie, score):
-#     """Create and return a new rating."""
-
-#     rating = Rating(user=user, movie=movie, score=score)
-
-#     return rating
+    #correct password
+    if user:
+        return True
+    else:
+        return False
 
 
+def get_user_by_id(user_id):
+    """Return a user by primary key."""
+
+    return User.query.get(user_id)
+
+
+def get_user_by_email(email):
+    """Return a user by email."""
+
+    return User.query.filter(User.email == email).first()
+
+def get_users():
+    """Return all users."""
+
+    return User.query.all()
+
+
+def updateActor(id):
+    update = Actor.query.filter_by(id=id).first()
+    #update.ethnicity = "Vietnamese"
+    return update
 
 if __name__ == "__main__":
     from server import app

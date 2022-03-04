@@ -7,9 +7,29 @@
 
 <p>{{ movie.overview }}</p>
 
-
 </ul>
 
 
 <img src="{{ movie.poster }}">
+<h2>Rate this movie</h2>
+
+{% if not session   %}
+<p>Please log in to rate this movie</p>
+{% endif %}
+
+{% if session.get('user_email') %}
+<h2>Rate this movie</h2>
+<form action="/movies/{{ movie.id }}/ratings" method="POST">
+  <p>
+    Rating:
+    <select name="rating">
+      <option value="">Select rating</option>
+      {% for num in range(6) %}
+        <option value="{{ num }}">{{ num }}</option>
+      {% endfor %}
+    </select>
+  </p>
+  <p><input type="submit"></p>
+</form>
+{% endif %}
 {% endblock %}

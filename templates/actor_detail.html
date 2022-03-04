@@ -7,10 +7,19 @@
 
 
 <p>
+  <img src="{{ actor.headshot }}">
   {{ actor.biography }}
+
 </p>
 
+<ul>
+  {% for character in characters %}
+  <li>   {{ character.char_name }} </li>
+</ul>
+
+{% endfor %}
 
 
-<img src="{{ actor.headshot }}">
+
+
 {% endblock %}

@@ -33,6 +33,7 @@ class Actor(db.Model):
     ethnicity = db.Column(db.String)
     biography = db.Column(db.Text)
     headshot = db.Column(db.String)
+    socialmedia_link = db.Column(db.String)
 
     
     def __repr__(self):
@@ -44,6 +45,7 @@ class Character(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     char_name = db.Column(db.String)
+    is_lead = db.Column(db.String)
     movie_id = db.Column(db.Integer, db.ForeignKey("movies.id"))
     actor_id = db.Column(db.Integer, db.ForeignKey("actors.id"))
 
@@ -58,14 +60,14 @@ class User(db.Model):
 
     __tablename__ = "users"
 
-    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    email = db.Column(db.String)
+    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
+    name = db.Column(db.String)
 
-    # ratings = a list of Rating objects
 
     def __repr__(self):
-        return f"<User user_id={self.user_id} email={self.email}>"
+        return f"<User user_id={self.user_id} name ={self.name} email={self.email}>"
 
 class Rating(db.Model):
     """A movie rating."""
@@ -75,7 +77,7 @@ class Rating(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     score = db.Column(db.Integer)
     movie_id = db.Column(db.Integer, db.ForeignKey("movies.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 
     movie = db.relationship("Movie", backref="ratings")
     user = db.relationship("User", backref="ratings")
