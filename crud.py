@@ -1,9 +1,14 @@
 """CRUD operations."""
 
-from model import db, User, Movie, Rating, Actor, Character, connect_to_db
+from model import db, User, Movie, Rating, Actor, Character, Favorite, connect_to_db
 
+"""
+***********************************
+MOVIE - CREATE/SEARCH
+***********************************
+"""
 
-def create_movie(movie_title,poster,overview,tmdb_id,release_date,watch_link):
+def create_movie(movie_title,poster,overview,tmdb_id,release_date,watch_link,genre):
     """Create and return a new movie."""
     movie = Movie(
         movie_title=movie_title,
@@ -11,13 +16,16 @@ def create_movie(movie_title,poster,overview,tmdb_id,release_date,watch_link):
         overview=overview,
         tmdb_id=tmdb_id,
         release_date=release_date,
-        watch_link=watch_link
+        watch_link=watch_link,
+        genre=genre
     )
     db.session.add(movie)
     db.session.commit()
     return movie
    
-            
+
+
+
 #get movie_id
 #create character from movie_id
 def create_character(char_name,actor,movie):
@@ -41,9 +49,7 @@ def create_actor(actor_name,gender,dob,other_name,biography,headshot):
     db.session.commit()  
     return actor
 
-def create_rating(user,movie, score):
-    rating = Rating(user=user,movie=movie,score=score)
-    return rating
+
 
 def get_actor_by_id(id):
     """Return a actor by primary key."""
@@ -79,10 +85,25 @@ def get_characters_from_actor(id):
 
     return Character.query.filter_by(actor_id=id)
 
+def get_actor_by_movie(id):
+    # character_list = (db.session.query(Movie).join(Character).filter(Character.movie_id==movie_id)).all())
+    actor_list = (db.session.query(Actor).join(Character).filter(Character.movie_id==id).all())
+    return actor_list
+
+
+
+def updateActor(id):
+    update = Actor.query.filter_by(id=id).first()
+    #update.ethnicity = "Vietnamese"
+    return update
+
+def updateMovie(tmdb_id):
+    update = Movie.query.filter_by(tmdb_id=tmdb_id).first()
+    return update
 
 """
 ***********************************
-USER SECTION
+USER SECTION - CREATE/LOGIN
 ***********************************
 """
 
@@ -122,32 +143,14 @@ def get_users():
     return User.query.all()
 
 
-def get_actor_by_movie(id):
-    # character_list = (db.session.query(Movie).join(Character).filter(Character.movie_id==movie_id)).all())
-    actor_list = (db.session.query(Actor).join(Character).filter(Character.movie_id==id).all())
-    return actor_list
 
 
 
-def updateActor(id):
-    update = Actor.query.filter_by(id=id).first()
-    #update.ethnicity = "Vietnamese"
-    return update
 
-def updateMovie(tmdb_id):
-    update = Movie.query.filter_by(tmdb_id=tmdb_id).first()
-    return update
 
-def get_movie_by_user(id):
-    movie_list = (db.session.query(Movie).join(Rating).filter(Rating.user_id==id).all())
-    return movie_list
-
-"""
-***********************************
-    USER SECTION - UPDATE PASSWORD
-***********************************
-"""   
-
+def create_rating(user,movie, score):
+    rating = Rating(user=user,movie=movie,score=score)
+    return rating
 
 
 if __name__ == "__main__":

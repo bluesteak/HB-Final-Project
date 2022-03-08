@@ -32,8 +32,13 @@ FEATURE MOVIE SECTION -->
 	
 </div>
 
-{% endblock %}
+<div class="search">
+	<form action="search" method="GET">
+		<p>
+			<input type="search" name="q" placeholder="Search here..."><button type="submit">Search</button>
+		</p>
 
-<!-- {% block js %}
-	<script src="/static/homepage.jsx" type="text/jsx"></script>
-{% endblock %} -->
+	  </form>
+</div>
+
+{% endblock %}

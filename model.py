@@ -84,6 +84,21 @@ class Rating(db.Model):
     def __repr__(self):
         return f"<Rating rating_id={self.rating_id} score={self.score}>"
 
+class Favorite(db.Model):
+    """Favorite movie by user"""
+
+    __tablename__ = "favorites"
+
+    fav_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey("movies.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+
+    movie = db.relationship("Movie", backref="favorites")
+    user = db.relationship("User", backref="favorites")
+
+    def __repr__(self):
+        return f"<Favorite fav_id={self.fav_id}>"
+
 def connect_to_db(flask_app, db_uri="postgresql:///movies", echo=False):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo

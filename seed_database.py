@@ -55,7 +55,7 @@ for person in person_list:
         if movie:
                 db_character = crud.create_character(char_name=response_movie["cast"][num]["character"], actor=db_actor, movie=movie)
         else:
-                db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"],release_date=response_movie["cast"][num]["release_date"],watch_link="")
+                db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"],release_date=response_movie["cast"][num]["release_date"],watch_link="",genre=response_movie["cast"][num]["genre_ids"])
                 print("Add movie to db",db_movie)
 
                 db_character = crud.create_character(char_name=response_movie["cast"][num]["character"],actor=db_actor,movie=db_movie)

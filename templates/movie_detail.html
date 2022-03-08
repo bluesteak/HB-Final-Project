@@ -31,6 +31,7 @@
 
 </ul>
 {% endfor %}
+<div class="rate-movie">
 <h2>Rate this movie</h2>
 
 {% if session.get('user_id') %}
@@ -50,4 +51,23 @@
 {% else   %}
 <p>Please log in to rate this movie</p>
 {% endif %}
+</div>
+<div class="add-favorite-movie">
+  <h2>Add To Favorite</h2>
+  
+  {% if session.get('user_id') %}
+  <form action="/movies/{{ movie.id }}/favorite" method="POST">
+    <p>
+      Add to Favorite
+      <select name="fav">
+        <option value="">Add</option>
+      </select>
+    </p>
+    <p><input type="submit"></p>
+  </form>
+  
+  {% else   %}
+  <p>Please log in to rate this movie</p>
+  {% endif %}
+  </div>
 {% endblock %}

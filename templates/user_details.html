@@ -36,20 +36,17 @@
         
     </div>
     <div> 
-      Movie I have rated:
+      <h2>Movie I have rated:</h2>
+      <ul>
       {% for movie in movie_list %}
-      {{ movie.movie_title }}
+      <li>{{ movie.movie_title }}</li>
       {% endfor %}
-    </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    </div>
+      </ul>
+
+      <h2>Movie in my favorite list:</h2>
+      {% for fav in favorite_list %}
+      <li>{{ fav.movie_title }}</li>
+      {% endfor %}
+ 
 
 {% endblock %}

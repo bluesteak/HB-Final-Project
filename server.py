@@ -81,7 +81,7 @@ def movie_detail(id):
 
 """
 ***********************************
-RATING SECTION
+RATING
 ***********************************
 """
 
@@ -198,7 +198,8 @@ def user():
     if "user" in session:
         user = session["user"]
         current_user = crud.get_user_by_email(user)
-        movie_list = crud.get_movie_by_user(current_user.user_id)
+        movie_list = cruddetail.get_movie_by_user(current_user.user_id)
+        favorite_list = cruddetail.get_fav_by_user(current_user.user_id)
         current_password = current_user.password
         new_password = request.form.get("newpassword")
         if request.method == "POST":
@@ -210,13 +211,34 @@ def user():
                 flash("Incorrect current password. Please try again")
         
 
-        return render_template("user_details.html",current_user=current_user,movie_list=movie_list)
+        return render_template("user_details.html",current_user=current_user,movie_list=movie_list,favorite_list=favorite_list)
     else:
         flash(f"Please login to view your account!")
         return redirect(url_for("login"))
     # """Show details on a particular user."""
     # show_user = crud.get_user_by_email(usr)
   
+# ADD FAVIROTE MOVIE
+@app.route("/favorite", methods=["POST"])
+def create_favorite(movie_id):
+    """Create a new rating for the movie."""
+
+    logged_in_email = session.get("user_email")
+    adding = request.form.get("fav")
+
+    if logged_in_email is None:
+        flash("You must log in to rate a movie.")
+    else:
+        user = crud.get_user_by_email(logged_in_email)
+        movie = crud.get_movie_by_id(movie_id)
+
+        favorite = crud.create_fav(user, movie)
+        db.session.add(favorite)
+        db.session.commit()
+
+        flash(f"You have added this movie to your favorite list.")
+
+    return redirect(f"/movies/{movie_id}")  
 
 
 
@@ -235,6 +257,22 @@ def logout():
     return redirect("/")
 
 
+"""
+***********************************
+SEARCH SECTION
+***********************************
+"""
+
+@app.route("/search")
+def search():
+    q = request.args.get('q')
+    if q:
+        movies = Movie.query.filter(Movie.movie_title.contains(q.title()))
+    else:
+        movies = Movie.query.all()
+
+    print(movies)
+    return render_template("search_result.html", movies=movies)
 
 
 if __name__ == "__main__":
