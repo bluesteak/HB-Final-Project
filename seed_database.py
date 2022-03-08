@@ -32,12 +32,13 @@ for person in person_list:
 
 
     # Get full image link and size for profile picture
-    image_base_url = "https://image.tmdb.org/t/p/w185"
+    image_base_url = "https://image.tmdb.org/t/p/original"
     profile_url = image_base_url + response["profile_path"]
     response["profile_path"] = profile_url
-
+        
     #Add actor to database
-    db_actor = crud.create_actor(actor_name=response["name"],dob=response["birthday"],gender=["gender"],other_name=response["also_known_as"],biography=response["biography"],headshot=response["profile_path"])
+    profile_url = response["profile_path"]
+    db_actor = crud.create_actor(actor_name=response["name"],dob=response["birthday"],gender=response["gender"],other_name=response["also_known_as"],biography=response["biography"],headshot=response["profile_path"])
   
     #Get movie detail
     movie_find = f"https://api.themoviedb.org/3/person/{person}/movie_credits?api_key={api_key}&language=en-US"
@@ -46,7 +47,7 @@ for person in person_list:
        
     #Add movie to database
     for num in range(len(response_movie["cast"])):
-        poster_base_url = "https://image.tmdb.org/t/p/w500"
+        poster_base_url = "https://image.tmdb.org/t/p/original"
         # movie_list = []
         print("Here is the tmdb id:")
         print(response_movie["cast"][num]["id"])
@@ -54,16 +55,16 @@ for person in person_list:
         if movie:
                 db_character = crud.create_character(char_name=response_movie["cast"][num]["character"], actor=db_actor, movie=movie)
         else:
-                db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"],release_date=response_movie["cast"][num]["release_date"])
+                db_movie = crud.create_movie(tmdb_id=response_movie["cast"][num]["id"],movie_title=response_movie["cast"][num]["original_title"],poster=(poster_base_url+response_movie["cast"][num]["poster_path"]),overview=response_movie["cast"][num]["overview"],release_date=response_movie["cast"][num]["release_date"],watch_link="")
                 print("Add movie to db",db_movie)
 
                 db_character = crud.create_character(char_name=response_movie["cast"][num]["character"],actor=db_actor,movie=db_movie)
 
 #Adding missing data to Actor Database
-id_list = [1,2]
-for id in id_list:
-        crud.updateActor(id).ethnicity = "Vietnamese"
-        model.db.session.commit()
+# id_list = [1,2]
+# for id in id_list:
+#         crud.updateActor(id).ethnicity = "Vietnamese"
+#         model.db.session.commit()
 
 #Create test users:
 for n in range(3):

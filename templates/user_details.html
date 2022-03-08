@@ -1,12 +1,55 @@
-{% extends 'base.html' %}
 
-{% block title %} 
 
-{% endblock %}
-
+<!-- VERSION 2 -->
+{% extends "base.html" %}
 {% block body %}
-<h1>Welcome back {{ user.name }}!</h1>
 
-
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="/static/img/profile-icon.png">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.name }}</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="update-password-form">
+        <form id="updatePassword" method="POST">
+            <h1>Change Password</h1>
+            <div class="FormRow">
+              <label for="email">Current Email: {{ current_user.email }}</label>
+            </div>
+            <div class="FormRow">
+              <label for="currentpassword">Current Password:</label>
+              <input type="password" id="currentpassword" name="currentpassword">
+            </div>
+            <div class="FormRow">
+                <label for="newpassword">New Password:</label>
+                <input type="password" id="newpassword" name="newpassword">
+            </div>
+            <div class="FormRow" id="LoginButtonDiv">
+                <button type="submit">Submit</button>
+            </div>
+        
+            </ul>
+        </form>
+        
+    </div>
+    <div> 
+      Movie I have rated:
+      {% for movie in movie_list %}
+      {{ movie.movie_title }}
+      {% endfor %}
+    </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
 
 {% endblock %}

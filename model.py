@@ -27,13 +27,12 @@ class Actor(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     actor_name = db.Column(db.String)
-    gender = db.Column(db.String)
+    gender = db.Column(db.Integer)
     dob = db.Column(db.DateTime)
     other_name = db.Column(db.String)
     ethnicity = db.Column(db.String)
     biography = db.Column(db.Text)
     headshot = db.Column(db.String)
-    socialmedia_link = db.Column(db.String)
 
     
     def __repr__(self):

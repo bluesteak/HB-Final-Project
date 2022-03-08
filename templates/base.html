@@ -1,67 +1,61 @@
 <!doctype html>
 <html>
   <head>
+    <title>{% block title %}
+      {% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" 
     content="width=device-width">
-    <!--Fonts -->
+
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;0,800;1,300;1,400&display=swap" rel="stylesheet">
+
       <!-- CSS -->
     <link rel="stylesheet" href=/static/style.css>
-    <!-- Assessment file -->
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script src="/static/register.js"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- jQuery script-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>
-      {% block title %}
-      {% endblock %}
-    </title>
 
-    {% block head %}{% endblock %}
+  
+
+    <!-- CAROUSEL -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
   </head>
   <body>
-    {% block body %}
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      {% for message in messages %}
-      <p class="flash">
-      <li>{{ message }}</li>
-      </p>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
-    {% endblock %}
+    <!-- JQUERY AND CAROUSEL -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- NAV BAR -->
     <div class="nav-wrapper">
         <div class="container">
           <div class="nav">
             <a href="#" class="logo">
-              <img src="/static/img/cannes1.png" alt=""/>
+             <img class="logo-img"src="/static/img/cannes1.png" alt=""/>
 
           <ul class = "nav-menu" id = "nav-menu">
               <li><a href="/"></a></li>
               <li><a href="/">Homepage</a></li>
               <li><a href="/movies">Movie</a></li>
               <li><a href="/actors">Actor</a></li>
-              <li><a href="#">About Us</a></li>
-
               {% if 'user_id' not in session %}
               <li><a href="{{url_for('login')}}">Login</a></li>
 
               {% else %}
-              <li><a href= "/users/{{ session["user_id"] }}">Your Account</a></li>
+              <li><a href= "/user">Your Account</a></li>
               <li><a href="/logout">Log Out</a></li>
-              <!-- ("/logout") -->
+
             {% endif %}
           </ul>
-              <!--write a jinja if stataement-->
+ 
           
-        
-            <!-- </a> -->
+                 
           </div>
 
 
@@ -70,6 +64,23 @@
         
 
     </div>
-    {% block after_body %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <p class="error">
+        {{ message }}
+      </p>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!-- PAGE CONTENT GO HERE -->
+    {% block body %}
+
+    {% endblock %}
+
+    {% block js %}
+    <!-- ASSESSMENT FILE -->
+    <script src="/static/app.js"></script>
+    {% endblock %}
   </body>
 </html>

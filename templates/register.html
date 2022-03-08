@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Register {% endblock %}
+
+{% block body %}
+
+<form id="RegisterForm" action="/register" method="post">
+  <h1>Register Page</h1>
+  <div class="FormRow">
+    <label for="name">User Name:</label>
+    <input type="text" id="name" name="name">
+</div>
+  <div class="FormRow">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email">
+  </div>
+
+  <div class="FormRow">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+  </div>
+</div>
+  <div class="FormRow" id="LoginButtonDiv">
+      <button class="btn" type="submit">Register</button>
+  </div> 
+        <ul id="error-message">
+      <li>Error message here!</li>
+
+  </ul>
+</form>
+ 
+
+{% endblock %}
+
+
+

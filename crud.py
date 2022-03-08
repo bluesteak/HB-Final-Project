@@ -3,14 +3,15 @@
 from model import db, User, Movie, Rating, Actor, Character, connect_to_db
 
 
-def create_movie(movie_title,poster,overview,tmdb_id,release_date):
+def create_movie(movie_title,poster,overview,tmdb_id,release_date,watch_link):
     """Create and return a new movie."""
     movie = Movie(
         movie_title=movie_title,
         poster=poster,
         overview=overview,
         tmdb_id=tmdb_id,
-        release_date=release_date
+        release_date=release_date,
+        watch_link=watch_link
     )
     db.session.add(movie)
     db.session.commit()
@@ -58,6 +59,11 @@ def get_movie_by_id(id):
 def get_movie_by_tmdb(tmdb_id):
     return Movie.query.filter_by(tmdb_id=str(tmdb_id)).first()
 
+def get_tmdb_ids():
+    list = Movie.query.with_entities(Movie.tmdb_id).all()
+    tmdb_list = [tmdb_id for tmdb_id, in list]
+    return tmdb_list
+
 def get_movies():
     """Return all movies."""
 
@@ -73,6 +79,12 @@ def get_characters_from_actor(id):
 
     return Character.query.filter_by(actor_id=id)
 
+
+"""
+***********************************
+USER SECTION
+***********************************
+"""
 
 def create_user(email, password, name):
     """Return a new user."""
@@ -110,10 +122,33 @@ def get_users():
     return User.query.all()
 
 
+def get_actor_by_movie(id):
+    # character_list = (db.session.query(Movie).join(Character).filter(Character.movie_id==movie_id)).all())
+    actor_list = (db.session.query(Actor).join(Character).filter(Character.movie_id==id).all())
+    return actor_list
+
+
+
 def updateActor(id):
     update = Actor.query.filter_by(id=id).first()
     #update.ethnicity = "Vietnamese"
     return update
+
+def updateMovie(tmdb_id):
+    update = Movie.query.filter_by(tmdb_id=tmdb_id).first()
+    return update
+
+def get_movie_by_user(id):
+    movie_list = (db.session.query(Movie).join(Rating).filter(Rating.user_id==id).all())
+    return movie_list
+
+"""
+***********************************
+    USER SECTION - UPDATE PASSWORD
+***********************************
+"""   
+
+
 
 if __name__ == "__main__":
     from server import app

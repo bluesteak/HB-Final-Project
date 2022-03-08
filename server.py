@@ -5,24 +5,37 @@ from flask import (Flask, render_template, request, flash, session, redirect,url
 from flask import jsonify
 
 
-
-from model import connect_to_db, db
+from model import connect_to_db, db, Movie, User
 from jinja2 import StrictUndefined 
 
 import requests
 import crud
 import os
+import cruddetail
 
 app = Flask(__name__)
 app.secret_key = os.environ["SECRET_KEY"]
 
 app.jinja_env.undefined = StrictUndefined
 
+"""
+***********************************
+HOMEPAGE SECTION
+***********************************
+"""
+
 #HomePage
 @app.route("/")
 def homepage():
     """ Show homepage """
-    return render_template("homepage.html")
+    movies = crud.get_movies()
+    return render_template("homepage.html",movies=movies)
+
+
+# @app.route("/giveme")
+# def random():
+#     movie = Movie.query.get(2)
+#     return jsonify({"movie_title":movie.movie_title})
 
 @app.route("/movies")
 def all_movies():
@@ -38,6 +51,11 @@ def all_actors():
     actors = crud.get_actors()
     return render_template("all_actors.html", actors=actors)
 
+"""
+***********************************
+ACTOR SECTION
+***********************************
+"""
 
 @app.route("/actors/<id>")
 def actor_detail(id):
@@ -47,11 +65,25 @@ def actor_detail(id):
     return render_template("actor_detail.html",actor=actor, character=character,characters=characters)
 
 
+"""
+***********************************
+MOVIE SECTION
+***********************************
+"""
+
 @app.route("/movies/<id>")
 def movie_detail(id):
     movie = crud.get_movie_by_id(id)
-    return render_template("movie_detail.html",movie=movie)
 
+    character = cruddetail.get_char(id)
+    
+    return render_template("movie_detail.html",movie=movie,character=character)
+
+"""
+***********************************
+RATING SECTION
+***********************************
+"""
 
 @app.route("/movies/<movie_id>/ratings", methods=["POST"])
 def create_rating(movie_id):
@@ -76,34 +108,57 @@ def create_rating(movie_id):
 
     return redirect(f"/movies/{movie_id}")    
 
-@app.route("/signup")
+"""
+***********************************
+REGISTER ACCOUNT SECTION
+***********************************
+"""
+
+@app.route("/register")
 def register():
     """Show sign up page and term&conditions"""
     return render_template("register.html")
 
-# @app.route("/signup", methods=["POST"])
-# def register_user():
-#     """Create a new user"""
-#     name = request.form.get("name")
+# @app.route("/register", methods=['POST'])
+# def signup():
+
 #     email = request.form.get("email")
 #     password = request.form.get("password")
-#     user = crud.get_user_by_email(email)
-    
-#     #Check if account exists, flash message for True
-#     if user:
-#         flash("Account already exists. Please try another email.")
-#     #If False, create a new account
-#     else:
-#         user = crud.create_user(email, password, name)
-#         flash("Congratulations! You account has been create. Please log in")
+#     name = request.form.get("name")
+#     user = crud.create_user(email, password, name)
+#     flash("Congratulations! You account has been create. Please log in")
 #     return redirect("/")
+
+@app.route("/register", methods=["POST"])
+def register_user():
+    """Create a new user"""
+    name = request.form.get("name")
+    email = request.form.get("email")
+    password = request.form.get("password")
+    user = crud.get_user_by_email(email)
+    
+    #Check if account exists, flash message for True
+    if user:
+        flash("Account already exists. Please try another email.")
+        return redirect("/signup")
+    #If False, create a new account
+    if not user:
+        user = crud.create_user(email, password, name)
+        flash("Congratulations! You account has been create. Please log in")
+    return redirect("/")
+
+"""
+***********************************
+LOG IN SECTION
+***********************************
+"""
 
 @app.route("/login")
 def login():
     return render_template("login.html")
 
 
-@app.route("/login",methods=["POST"])
+@app.route("/login",methods=["POST", "GET"])
 def login_user():
     """Process existing user login"""
     email = request.form.get("email")
@@ -113,37 +168,63 @@ def login_user():
     if not user or user.password != password:
     #Wrong email and password
         flash("Wrong email or password. Please try again")
-
+        return redirect("/login")
 
     else:
     #Log in user
         session["user_name"] = user.name
-        session["user_email"] = user.email
+        session["user"] = user.email
+        # session["user_email"] = user.email
         session["user_id"] = user.user_id
-
         flash(f"Welcome Back, {user.name}!")
-    return redirect("/")
+    return redirect(url_for("user"))
+
+# @app.route("/users")
+# def all_users():
+#     """View all users."""
+
+#     users = crud.get_users()
+
+#     return render_template("all_users.html", users=users)
+
+"""
+***********************************
+USER ROUTE SECTION
+***********************************
+"""
+
+@app.route("/user", methods = ["POST", "GET"])
+def user():
+    if "user" in session:
+        user = session["user"]
+        current_user = crud.get_user_by_email(user)
+        movie_list = crud.get_movie_by_user(current_user.user_id)
+        current_password = current_user.password
+        new_password = request.form.get("newpassword")
+        if request.method == "POST":
+            if current_user.password == request.form.get("currentpassword"):
+                current_user.password = request.form.get("newpassword")
+                db.session.commit()
+                flash("Updated password!")
+            else:
+                flash("Incorrect current password. Please try again")
+        
+
+        return render_template("user_details.html",current_user=current_user,movie_list=movie_list)
+    else:
+        flash(f"Please login to view your account!")
+        return redirect(url_for("login"))
+    # """Show details on a particular user."""
+    # show_user = crud.get_user_by_email(usr)
+  
 
 
-@app.route("/users")
-def all_users():
-    """View all users."""
 
-    users = crud.get_users()
-
-    return render_template("all_users.html", users=users)
-
-@app.route("/users/<user_id>")
-def show_user(user_id):
-    """Show details on a particular user."""
-
-    user = crud.get_user_by_id(user_id)
-
-    return render_template("user_details.html", user=user)
-
-
-
-
+"""
+***********************************
+LOG OUT SECTION
+***********************************
+"""
 
 @app.route("/logout")
 def logout():
