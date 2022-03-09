@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Search Result {% endblock %}
+
+{% block body %}
+You can see your search result here
+{% for movie in movies %}
+{{ movie.movie_title }}
+{% endfor %}
+
+{% endblock %}
+
+
+
