@@ -23,8 +23,8 @@ person_list=["123"]
 tmdb_list = crud.get_tmdb_ids()
 
 # result = SomeModel.query.with_entities(SomeModel.col1, SomeModel.col2)
-for value in tmdb_list:
-    trailer_find = f"https://api.themoviedb.org/3/movie/{value}/videos?api_key={api_key}&language=en-US"
+for tmdb in tmdb_list:
+    trailer_find = f"https://api.themoviedb.org/3/movie/{tmdb}/videos?api_key={api_key}&language=en-US"
 
     response_trailer = requests.get(trailer_find)
     response_trailer = response_trailer.json()
@@ -33,8 +33,9 @@ for value in tmdb_list:
         if (response_trailer["results"][0]['site'] == "YouTube"):
             if(response_trailer["results"][0]['type'] == "Trailer"):
                 full_link = response_trailer["results"][i]["key"]
-                print(full_link)
-            full_link = crud.updateMovie(value).watch_link
+                print("Get full_link:",full_link)  
+                full_link = crud.update_movie(tmdb).watch_link
+                print("Commit this link to db:",full_link)
 model.db.session.commit()
 
 

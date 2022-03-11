@@ -6,28 +6,19 @@
 
 {% block body %}
 {% for c in character %}
-<h1>{{ c.movie.movie_title }} {{ c.movie.release_date }}</h1>
-<p>Movie Overview:</p>
-<p>{{ c.movie.overview }}</p>
-<p>Watch Trailer:</p>
-
+<h1>{{ c.movie.movie_title }}</h1>
 <ul>
-  <li>Release Date: {{ c.movie.release_date }}</li>
-  <li>Asian Actor in this film:</li>
-  <li>Character:</li>
-  <li>
-    <li>
-      {{ c.char_name }}
-      {{ c.actor.actor_name }}
-      {{ c.movie.release_date }}
-  
-      {% if c.movie.watch_link %}
-        <p>{% set trailer_link = "http://youtube.com/embed/" ~ c.movie.watch_link ~ "" %}</p>
-        <iframe width="560" height="315" src="{{ trailer_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      {% endif %}
-  
-  </li>
-  </li>
+  <li>Release Date:{{ c.movie.release_date.strftime('%Y-%m-%d') }}</li>
+  <li>Movie Overview: {{ c.movie.overview }}</li>
+  <li>Asian Actor in this film:{{ c.actor.actor_name }}</li>
+  <li>Their character:     {{ c.char_name }}</li>
+  <li> Watch Trailer: {{ c.movie.watch_link }}</li> 
+    <!-- {% if c.movie.watch_link %}
+    <p>{% set trailer_link = "http://youtube.com/embed/" ~ c.movie.watch_link ~ "" %}</p>
+    <iframe width="560" height="315" src="{{ trailer_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% endif %} -->
+    
+
 
 </ul>
 {% endfor %}
@@ -70,4 +61,10 @@
   <p>Please log in to rate this movie</p>
   {% endif %}
   </div>
+
+
+
 {% endblock %}
+
+
+

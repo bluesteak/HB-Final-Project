@@ -97,7 +97,7 @@ def updateActor(id):
     #update.ethnicity = "Vietnamese"
     return update
 
-def updateMovie(tmdb_id):
+def update_movie(tmdb_id):
     update = Movie.query.filter_by(tmdb_id=tmdb_id).first()
     return update
 

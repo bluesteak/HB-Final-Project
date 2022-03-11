@@ -166,3 +166,52 @@ a {
   border-radius: 3px;
   margin-bottom: 20px;
 }
+
+.backdrop-container {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+
+
+ div.header.large.first {
+  border-bottom: 1px solid var(--primaryColor);
+  background-position: right -200px top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid var(--primaryColor);
+  background-position: right -200px top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.header-movie-item {
+  width: 100%;
+  padding-top: 70%;
+  position: absolute;
+} 
+
+.header-movie-item img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 5px;
+} 
+
+.overlay-movie {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(211, 64, 64, 0.5)
+
+}
