@@ -93,16 +93,19 @@ a {
 .nav-menu a:hover {
   color: var(--main-color);
 }
-
+/* -----------------------------------------
+              HOME PAGE CAROSEL 
+----------------------------------------------*/
 .hero-slide-item {
-  padding-top:90%;
+  padding-left:10%;
+  padding-right:10%;
   position: flex;
   overflow: show;
-  width: 80%;
+  width: 90%;
 }
 
 .hero-slide-item img {
-  position: flex;
+  position: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -119,6 +122,47 @@ a {
   color: var(--main-color);
 }
 
+.carousel-nav-center{
+  position: relative;
+}
+
+.carousel-nav-center .owl-nav button i {
+  font-size: 3rem;
+}
+
+.carousel-nav-center .owl-nav button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%)
+}
+
+.carousel-nav-center .owl-nav .owl-prev {
+  position: absolute;
+  left: 5px;
+}
+
+.carousel-nav-center .owl-nav .owl-next {
+  position: absolute;
+  right: 5px;
+} 
+
+.owl-nav button i{
+  background-color: rgba(109, 109, 109, 0);
+  border-radius: 50%;
+} 
+/* 
+
+
+
+
+
+
+*/
+
+
+
+
+/* NEXT ITEM HERE */
 .content-title {
   font-size: 30px;
   font-weight: 1000;
@@ -194,7 +238,7 @@ a {
 
 .header-movie-item {
   width: 100%;
-  padding-top: 70%;
+  padding-top: 30%;
   position: absolute;
 } 
 
@@ -206,12 +250,3 @@ a {
   border-radius: 5px;
 } 
 
-.overlay-movie {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: rgba(211, 64, 64, 0.5)
-
-}

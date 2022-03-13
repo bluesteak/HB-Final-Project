@@ -8,7 +8,7 @@ MOVIE - CREATE/SEARCH
 ***********************************
 """
 
-def create_movie(movie_title,poster,overview,tmdb_id,release_date,watch_link,genre):
+def create_movie(movie_title,poster,overview,tmdb_id,release_date,watch_link,genre,back_drop,vote_average):
     """Create and return a new movie."""
     movie = Movie(
         movie_title=movie_title,
@@ -17,7 +17,9 @@ def create_movie(movie_title,poster,overview,tmdb_id,release_date,watch_link,gen
         tmdb_id=tmdb_id,
         release_date=release_date,
         watch_link=watch_link,
-        genre=genre
+        genre=genre,
+        back_drop=back_drop,
+        vote_average=vote_average
     )
     db.session.add(movie)
     db.session.commit()
@@ -36,14 +38,16 @@ def create_character(char_name,actor,movie):
     db.session.commit()
     return character
 
-def create_actor(actor_name,gender,dob,other_name,biography,headshot):
+def create_actor(actor_name,gender,dob,other_name,biography,headshot,known_for,place_of_birth):
     actor = Actor(
         actor_name=actor_name,
         gender=gender,
         dob=dob,
         other_name=other_name,
         biography=biography,
-        headshot=headshot
+        headshot=headshot,
+        known_for=known_for,
+        place_of_birth=place_of_birth
     )
     db.session.add(actor)
     db.session.commit()  
@@ -92,7 +96,7 @@ def get_actor_by_movie(id):
 
 
 
-def updateActor(id):
+def update_actor(id):
     update = Actor.query.filter_by(id=id).first()
     #update.ethnicity = "Vietnamese"
     return update
@@ -101,6 +105,9 @@ def update_movie(tmdb_id):
     update = Movie.query.filter_by(tmdb_id=tmdb_id).first()
     return update
 
+def update_char(id):
+    update = Character.query.filter_by(id=id).first()
+    return update
 """
 ***********************************
 USER SECTION - CREATE/LOGIN

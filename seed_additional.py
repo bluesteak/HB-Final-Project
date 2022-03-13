@@ -13,12 +13,34 @@ API = os.environ["TMDB_KEY"]
 api_key = API
 model.connect_to_db(server.app)
 
-person_list=["123"]
-#Seed ethnicity
-# id_list =[1,2]
-# for id in id_list:
-#     crud.updateActor(1).ethnicity = "Vietnamese"
-# model.db.session.commit()
+person_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+for i in person_list:
+    actor = crud.update_actor(i)
+    if i <=5:
+        update = "Vietnamese"
+    elif 5<i<=10:
+        update = "Chinese"
+    elif i>10:
+        update = "Korean"
+    actor.ethnicity = update
+    model.db.session.add(actor)
+    model.db.session.commit()
+
+
+# Load movie data from JSON file
+with open("data/char_lead.json") as f:
+    char_data = json.loads(f.read())
+
+# Create movies, store them in list so we can use them
+# to create fake ratings
+for char in char_data:
+    lead_role = char["lead"]
+    character = crud.update_char(char["id"])
+    character.is_lead = lead_role
+    model.db.session.add(character)
+    model.db.session.commit()
+
+
 
 tmdb_list = crud.get_tmdb_ids()
 
@@ -34,9 +56,13 @@ for tmdb in tmdb_list:
             if(response_trailer["results"][0]['type'] == "Trailer"):
                 full_link = response_trailer["results"][i]["key"]
                 print("Get full_link:",full_link)  
-                full_link = crud.update_movie(tmdb).watch_link
+
+                movie = crud.update_movie(tmdb)
+                movie.watch_link = full_link
+                model.db.session.add(movie)
+                model.db.session.commit()
                 print("Commit this link to db:",full_link)
-model.db.session.commit()
+
 
 
 

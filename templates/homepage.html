@@ -7,38 +7,42 @@
 
 <!-- 
 FEATURE MOVIE SECTION -->
-
-<div class="hero-section">
 	
+	
+<div class="hero-section">
+<h1>MOVIES WITH ASIAN LEAD</h1>	
 	<div class="hero-slide">
-		
+			
 		<div class="owl-carousel carousel-nav-center" id="movie-carousel">
-			{% for movie in movies %}
+			{% for c in asian_lead_movies %}
+			{% set poster_link ="https://image.tmdb.org/t/p/original" ~ c.movie.poster ~ "" %}
+	
 			<div class="hero-slide-item">
-				<img src="{{ movie.poster }}">
-				<div class="overlay"></div>
+				<img src="{{ poster_link }}">
+				<div class="overlay-movie"></div>
 				<div class="hero-slide-item-content">
 					<div class="item-content-wrapper">
 						<div class="content-title">
-							{{ movie.movie_title }}
+								<!-- {{ c.movie.movie_title }} -->
 						</div>
 					</div>
 				</div>
 			</div>
-			
+				
 			{% endfor %}	
 		</div>
 	</div>
-	
+		
 </div>
-
+	
 <div class="search">
 	<form action="search" method="GET">
 		<p>
 			<input type="search" name="q" placeholder="Search here..."><button type="submit">Search</button>
 		</p>
-
-	  </form>
-</div>
+	
+		</form>
+</div> 
+	
 
 {% endblock %}

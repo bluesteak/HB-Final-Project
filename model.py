@@ -18,6 +18,8 @@ class Movie(db.Model):
     overview = db.Column(db.Text)
     release_date = db.Column(db.DateTime)
     tmdb_id = db.Column(db.String)
+    back_drop = db.Column(db.String)
+    vote_average = db.Column(db.Integer)
     def __repr__(self):
         return f'<Movie id={self.id} title={self.movie_title}>'
     
@@ -33,6 +35,8 @@ class Actor(db.Model):
     ethnicity = db.Column(db.String)
     biography = db.Column(db.Text)
     headshot = db.Column(db.String)
+    known_for = db.Column(db.String)
+    place_of_birth = db.Column(db.String)
 
     
     def __repr__(self):

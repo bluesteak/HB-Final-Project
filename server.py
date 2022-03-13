@@ -19,17 +19,17 @@ app.secret_key = os.environ["SECRET_KEY"]
 app.jinja_env.undefined = StrictUndefined
 
 """
-***********************************
+*****************************************
 HOMEPAGE SECTION
-***********************************
+*****************************************
 """
 
 #HomePage
 @app.route("/")
 def homepage():
     """ Show homepage """
-    movies = crud.get_movies()
-    return render_template("homepage.html",movies=movies)
+    asian_lead_movies = cruddetail.get_asian_lead()
+    return render_template("homepage.html",asian_lead_movies=asian_lead_movies)
 
 
 # @app.route("/giveme")
@@ -89,7 +89,7 @@ RATING
 def create_rating(movie_id):
     """Create a new rating for the movie."""
 
-    logged_in_email = session.get("user_email")
+    logged_in_email = session.get("user")
     rating_score = request.form.get("rating")
 
     if logged_in_email is None:
@@ -218,21 +218,20 @@ def user():
     # """Show details on a particular user."""
     # show_user = crud.get_user_by_email(usr)
   
-# ADD FAVIROTE MOVIE
-@app.route("/favorite", methods=["POST"])
+# ADD FAVORITE MOVIE
+@app.route("/movies/<movie_id>/favorite", methods=["POST"])
 def create_favorite(movie_id):
     """Create a new rating for the movie."""
-
-    logged_in_email = session.get("user_email")
+    logged_in_email = session.get("user")
     adding = request.form.get("fav")
 
     if logged_in_email is None:
-        flash("You must log in to rate a movie.")
+        flash("You must log in to add to favorite.")
     else:
         user = crud.get_user_by_email(logged_in_email)
         movie = crud.get_movie_by_id(movie_id)
 
-        favorite = crud.create_fav(user, movie)
+        favorite = cruddetail.create_fav(user, movie)
         db.session.add(favorite)
         db.session.commit()
 

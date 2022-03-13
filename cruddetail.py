@@ -19,6 +19,17 @@ def get_fav_by_user(id):
     fav_list = (db.session.query(Movie).join(Favorite).filter(Favorite.user_id==id).all())
     return fav_list
 
+
 def create_fav(user,movie):
     fav = Favorite(user=user,movie=movie)
     return fav
+
+
+"""
+***********************************
+    MOVIE QUERY DETAIL - FOR HOMEPAGE
+***********************************
+"""   
+def get_asian_lead():
+    asian_lead = db.session.query(Character).options(db.joinedload('movie')).filter(Character.is_lead=="Yes").all()
+    return asian_lead
