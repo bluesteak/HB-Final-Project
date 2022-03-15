@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "actor_id": 1,
+    "lead": "Yes"
+  },
+  {
+    "id": 15,
+    "actor_id": 2,
+    "lead": "Yes"
+  },
+  {
+    "id": 14,
+    "actor_id": 2,
+    "lead": "Yes"
+  },
+  {
+    "id": 20,
+    "actor_id": 2,
+    "lead": "Yes"
+  },
+  {
+    "id": 71,
+    "actor_id": 4,
+    "lead": "Yes"
+  },
+  {
+    "id": 70,
+    "actor_id": 4,
+    "lead": "Yes"
+  },
+  {
+    "id": 92,
+    "actor_id": 5,
+    "lead": "Yes"
+  },
+  {
+    "id": 105,
+    "actor_id": 6,
+    "lead": "Yes"
+  },
+  {
+    "id": 127,
+    "actor_id": 7,
+    "lead": "Yes"
+  },
+  {
+    "id": 128,
+    "actor_id": 7,
+    "lead": "Yes"
+  },
+  {
+    "id": 148,
+    "actor_id": 8,
+    "lead": "Yes"
+  },
+  {
+    "id": 141,
+    "actor_id": 8,
+    "lead": "Yes"
+  },
+  {
+    "id": 206,
+    "actor_id": 9,
+    "lead": "Yes"
+  },
+  {
+    "id": 207,
+    "actor_id": 9,
+    "lead": "Yes"
+  },
+  {
+    "id": 231,
+    "actor_id": 10,
+    "lead": "Yes"
+  },
+  {
+    "id": 228,
+    "actor_id": 10,
+    "lead": "Yes"
+  },
+  {
+    "id": 161,
+    "actor_id": 8,
+    "lead": "Yes"
+  },
+  {
+    "id": 265,
+    "actor_id": 11,
+    "lead": "Yes"
+  },
+  {
+    "id": 269,
+    "actor_id": 11,
+    "lead": "Yes"
+  },
+  {
+    "id": 366,
+    "actor_id": 13,
+    "lead": "Yes"
+  },
+  {
+    "id": 365,
+    "actor_id": 13,
+    "lead": "Yes"
+  },
+  {
+    "id": 359,
+    "actor_id": 13,
+    "lead": "Yes"
+  },
+  {
+    "id": 358,
+    "actor_id": 13,
+    "lead": "Yes"
+  }
+]

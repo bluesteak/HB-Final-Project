@@ -129,7 +129,7 @@ def register():
 #     flash("Congratulations! You account has been create. Please log in")
 #     return redirect("/")
 
-@app.route("/register", methods=["POST"])
+@app.route("/register", methods=["POST","GET"])
 def register_user():
     """Create a new user"""
     name = request.form.get("name")
@@ -140,12 +140,11 @@ def register_user():
     #Check if account exists, flash message for True
     if user:
         flash("Account already exists. Please try another email.")
-        return redirect("/signup")
     #If False, create a new account
     if not user:
         user = crud.create_user(email, password, name)
         flash("Congratulations! You account has been create. Please log in")
-    return redirect("/")
+    return redirect(request.referrer)
 
 """
 ***********************************
@@ -178,6 +177,7 @@ def login_user():
         session["user_id"] = user.user_id
         flash(f"Welcome Back, {user.name}!")
     return redirect(url_for("user"))
+
 
 # @app.route("/users")
 # def all_users():
@@ -237,8 +237,8 @@ def create_favorite(movie_id):
 
         flash(f"You have added this movie to your favorite list.")
 
-    return redirect(f"/movies/{movie_id}")  
-
+    # return redirect(f"/movies/{movie_id}")  
+    return redirect(request.referrer)
 
 
 """
