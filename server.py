@@ -129,7 +129,7 @@ def register():
 #     flash("Congratulations! You account has been create. Please log in")
 #     return redirect("/")
 
-@app.route("/register", methods=["POST","GET"])
+@app.route("/register", methods=["POST"])
 def register_user():
     """Create a new user"""
     name = request.form.get("name")
@@ -143,8 +143,8 @@ def register_user():
     #If False, create a new account
     if not user:
         user = crud.create_user(email, password, name)
-        flash("Congratulations! You account has been create. Please log in")
-    return redirect(request.referrer)
+        flash("Congratulations! You account has been create. Please log in here")
+    return redirect(url_for("login_user"))
 
 """
 ***********************************
