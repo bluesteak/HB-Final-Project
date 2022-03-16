@@ -93,9 +93,9 @@ a {
 .nav-menu a:hover {
   color: var(--main-color);
 }
-/* -----------------------------------------
+/* ------------------------------
               HOME PAGE CAROSEL 
-----------------------------------------------*/
+------------------------------*/
 .hero-slide-item {
   padding-left:10%;
   padding-right:10%;
@@ -249,6 +249,59 @@ a {
   width: 100%;
   border-radius: 5px;
 } 
+/************ 
+ALL MOVIES PAGE 
+************/
+#movie-card-section{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+}
+.movie-card-main {
+  width: auto;
+  padding: 2;
+}
+.movie-card {
+  border-radius: 3px;
+  box-shadow: 0.2px 4px 5px rgba(0,0,0,0.5);
+  width: 300px;
+  background-color:#e1e1e1;
+}
+.movie-card img {
+  width: 100%;
+  border-radius: 3px;
+}
+.movie-info{
+  color:rgb(231, 99, 52);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 1rem;
+  letter-spacing: 0.5px;
+}
+.movie-info h4{
+  margin-top:0;
+}
+.movie-info span {
+  background-color:black;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.overview{
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:#ffffff;
+}
+
+/* .movie-card:hover .overview{
+  transform: translateY(0); 
+} */
 
 /* LOG IN PAGE */
 .bg-image-vertical {

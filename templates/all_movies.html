@@ -4,12 +4,25 @@
 {% block body %}
 
   <h2>The list of Movies</h2>
-<ul>
+<div id="movie-card-section">
   {% for movie in movies %}
-  <li><a href="/movies/{{ movie.id }}">{{ movie.movie_title }} </a><li>
-  <li><img src="{{ movie.poster }}"></li>
-  <li>{{ movie.overview }}</li>
+  <div class="movie-card-main">
+    <div class="movie-card">
+     {% set poster_link ="https://image.tmdb.org/t/p/w342" ~ movie.poster ~ "" %}
+      <img src="{{ poster_link }}">
+      {% if poster_link == "https://image.tmdb.org/t/p/w342None" %}
+      <img src="/static/img/coming-soon.jpeg">
+      {% endif%}
+      <div class="movie-info"><h4>{{ movie.movie_title }}</h4>
+        <span>{{ movie.vote_average }}</span>
+      </div>
 
-{% endfor %}
-</ul>
+      <div class="overview">
+        <h5>Overview:</h5>
+        {{ movie.overview }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}
