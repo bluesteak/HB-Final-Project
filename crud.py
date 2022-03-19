@@ -59,9 +59,9 @@ def get_actor_by_id(id):
     """Return a actor by primary key."""
     return Actor.query.get(id)
 
-def get_character_by_actor_id(actor_id):
-    """Return a actor by primary key."""
-    return Character.query.get(actor_id)
+# def get_character_by_actor_id(actor_id):
+#     """Return a actor by primary key."""
+#     return Character.query.get(actor_id)
 
 def get_movie_by_id(id):
     return Movie.query.get(id)

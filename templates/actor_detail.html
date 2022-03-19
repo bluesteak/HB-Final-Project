@@ -3,22 +3,115 @@
 {% block title %}{{ actor.actor_name }} - Details{% endblock %}
 
 {% block body %}
-<h1>{{ actor.actor_name }}</h1>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+  {% for key, value in data.items() %}
+    {% if value is string %}
+      ['{{ key }}', '{{ value }}'],
+    {% else %}
+      ['{{ key }}', {{ value }}],
+    {% endif %}
+  {% endfor %}
+    ]);
 
-<p>e
-  <img src="{{ actor.headshot }}">
-  {{ actor.biography }}
+    var options = {
+      title: '',
+      pieHole:0.4,
+      width: 300,
+      pieSliceText: 'percentage',
+      colors:["#f6dd49","#e7ba3d"],
+      backgroundColor: 'none',
+      legend: { position: 'bottom', alignment: 'center',textStyle: {color: 'black', fontSize: 14} },
+    };
 
-</p>
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+    
+  }
+</script>
+<div class="container-actor">
+  <div class="a">
+    <div class="a-image">
+      <img src=" {{ actor.headshot }}">
+    </div>
+    <div class="a-personal-info">
+      <h4 class="person-info-title">Personal Info</h4>
+      <ul class="person-info-list">
+        <li><b>Gender:</b> {{ actor.gender }}</li>
+        <li><b>Date Of Birth:</b> {{ actor.dob }}</li>
+        <li><b>Other Name:</b>{{ (actor.other_name)[1:-1]  }}</li>
+        <li><b>Heritage:</b> {{ actor.ethnicity}}</li>
+      </ul>
+    </div>
+    <div class="a-credit-info">
+      <h4 class="person-info-title">Credit Info</h4>
+      <ul class="person-info-list">
+        <li><b>Known For:</b> {{ actor.known_for }}</li>
+        <li><b>Known Lead Role:</b> {{ lead_count }}</li>
+        <li><b>Known Credit:</b>  {{ count }}</li>       
+      </ul>
+      <div class="chart" style="width: 290px">
+        <h3 style="text-align:center;">Role Type Per Actor</h3>
+        <div id="piechart_3d" style="width: 300px; height: 300px;"></div>
+    </div>
+  </div>
+</div>
+  <div class="b">
+    
+    <div class="biography">
+      <h1> {{ actor.actor_name }}</h1>
+      <h3>Biography</h3>
+      <span>
+        {{ actor.biography }}
+      </span>
+    </div>
+    <div class="know-for">
+      <h3>Known For</h3>
 
-<ul>
-  {% for character in characters %}
-  <li>   {{ character.char_name }} </li>
-</ul>
+      <div class="hero-section">
+	
+        <div class="hero-slide">
+            
+          <div class="owl-carousel carousel-nav-center" id="movie-carousel">
+            {% for c in char %}
+            {% set poster_link ="https://image.tmdb.org/t/p/original" ~ c.movie.poster ~ "" %}
+        
+            <div class="hero-slide-item">
+              <a href="/movies/{{c.movie.id}}"><img src="{{ poster_link }}"></a>
+              <div class="overlay-movie"></div>
+              <div class="hero-slide-item-content">
+                <div class="item-content-wrapper">
+                  <div class="content-title">
+                      <!-- {{ c.movie.movie_title }} -->
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+            {% endfor %}	
+          </div>
+        </div>
+          
+      </div>
 
-{% endfor %}
 
 
+    </div>
+    <div class="acting">
+      <h3>Acting</h3>
+      <ul>
+      {% for c in char%}
+      <li><a href="/movies/{{c.movie.id}}">{{ c.movie.movie_title }}({{c.movie.release_date.strftime('%Y')}})</a>
+        as <b>{{ c.char_name }}</b></li>
+        {% endfor%}
+    </ul>
+    </div>
 
-
+   
+  </div>
+</div>
 {% endblock %}

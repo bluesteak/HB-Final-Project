@@ -5,7 +5,7 @@ import json
 import requests
 from datetime import datetime
 
-from random import choice, randint
+from random import random, choice, randint
 
 import model
 import server

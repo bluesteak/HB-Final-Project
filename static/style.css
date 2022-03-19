@@ -1,10 +1,17 @@
 :root{
-  --main-color: #ffffff;
-  --body-bg: rgb(231, 231, 231);
+  --main-color: rgba(247, 247, 247, 0.899);
+  --main-orange:red;
+  --body-bg: rgb(255, 255, 255);
   --box-bg: #f7fa40;
-  --text-color: #5f5f5f;
+  --text-color: #000000;
   --nav-height: 70px;
-  --overlay-color: #ffffff;
+  --overlay-color: rgb(39, 102, 123);
+  --button-color: #f6dd49;
+  --button-hover: #e7ba3e;
+  --test-color: red;
+}
+.FuturaFont{
+  font-family:"Futura Book";
 }
 
 * {
@@ -18,21 +25,21 @@ html {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Oswald', sans-serif;
   background-color: var(--body-bg);
-  color: var(--text-color);
-  padding-top: var(--nav-height);
+  padding-top: 0;
+  margin: 0px;
 }
 
-a {
+/* a {
   text-decoration: none;
-}
+} */
 
 
-.main-color {
+/* .main-color {
   color: var(--main-color);
 
-}
+} */
 
 .container {
   max-width: 1920px;
@@ -40,62 +47,103 @@ a {
   margin: auto;
 }
 
-.overplay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0,0,0,0.5);
-}
 
-.nav-wrapper {
-  background-color: #e4e12a;
-  position: fixed;
+
+/*==================== 
+  NAV BAR 
+====================== */
+.nav-wrapper{
+  background-color: var(--main-color); 
   top: 0;
   left: 0;
   width: 100%;
   z-index: 50;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between normal;
+/*==================== 
+  Footer 
+====================== */
+
+/* Main Footer */
+footer .main-footer{  padding: 5px 0;  background: var(--main-color);
+left: 2%;
+right: 2%;}
+footer ul{  padding-left: 0;  list-style: none;}
+
+/* Copy Right Footer */
+.footer-copyright { padding: 5px 0;}
+.footer-copyright nav {    float: right;    margin-top: 5px;}
+.footer-copyright nav ul {  list-style: none; margin: 0;  padding: 0;}
+.footer-copyright nav ul li { border-left: 1px solid #505050; display: inline-block;  line-height: 12px;  margin: 0;  padding: 0 8px;}
+.footer-copyright nav ul li a{  color: #969696;}
+.footer-copyright nav ul li:first-child { border: medium none;  padding-left: 0;}
+.footer-copyright p { color: rgb(244 185 25); margin: 2px 0 0;}
+.typo-light {
+  color: rgb(244 185 25);
+  text-align: center;
+}
+.footer-title {
+  font-weight: bold;
+  text-align: center;
+}
+/*==================== 
+  HOME PAGE SEARCH BOX
+====================== */
+.search-box{
+  size: 500px;
+  height: 200px;
+  bottom: 10;
+  background-image: url(/static/img/cover.jpeg), linear-gradient( to top,rgb(254 254 254),rgb(246 221 73 / 80%));
+  background-blend-mode: overlay;
+  background-size: cover;
+}
+
+.overlay-search {
+  background-color: var(--overlay-color);
+  height: inherit;
+  size: inherit;
+  opacity: 0.7;
+}
+
+.container-search {
+  margin-left: 60px;
+  text-align: center;
+  position: relative;
+  left: 5%;
+  top: 20%;
+  right: 5%;
+}
+
+.input-group-append {
+  background-color: var(--button-color);
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: var(--button-hover);
+}
+
+.search-content {
   color: var(--text-color);
-  height: var(--nav-height);
-}
-.nav a {
-  color: var(--text-color);
-}
-
-
-.logo-img {
-  max-width: 15%;
+  word-wrap: normal;
+  text-align: center;
+  position: relative;
+  top: 10%;
 }
 
-.nav-menu {
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
+/* .input-text:focus {
+  box-shadow: 0px 0px 0px;
+  border-color: rgb(8, 255, 37);
+  outline: 0px
 }
 
-.nav-menu li ~ li{
-  margin-left: 20px;
-}
+.form-control {
+  border: 1px solid rgb(249, 0, 0);
+} */
 
-.nav-menu a {
-  text-transform: uppercase;
-  font-weight: 800;
-}
-
-.nav-menu a:hover {
-  color: var(--main-color);
-}
-/* ------------------------------
-              HOME PAGE CAROSEL 
-------------------------------*/
+/*==================== 
+  HOMEPAGE CAROSEUL
+====================== */
 .hero-slide-item {
   padding-left:10%;
   padding-right:10%;
@@ -110,6 +158,7 @@ a {
   left: 0;
   width: 100%;
   border-radius: 10px;
+  background-color:#505050;
 
 }
 
@@ -150,18 +199,54 @@ a {
   background-color: rgba(109, 109, 109, 0);
   border-radius: 50%;
 } 
-/* 
+/*==================== 
+  HOME PAGE FEATURE 
+====================== */
+.content-container {
+  margin-left: 5px;
+}
+.feature-content {
+  height: 50vh;
+}
 
+.feature-title{
+  position: relative;
+  font-size:50px;
+  color: var(--text-color);
+  text-shadow: var(--main-color);
+  padding: 1px;
+  top: 30%;
+  text-align: left;
+  left: 3%;
+}
+.feature-item {
+  text-align: left;
+  color:var(--text-color);
+  position: relative;
+  margin-right: 40%;
+  padding-inline:inherit;
+  top: 33%;
+  margin-left: 3%;
+  font-size: 15px;
 
+}
 
-
-
-
-*/
-
-
-
-
+.homepage-title {
+  padding: 2%;
+  left: 10px;
+  font-size:30px;
+  text-decoration:overline;
+}
+.trailer-button {
+  background-color: var(--button-color);
+  border-radius: 5px;
+  border-color: none;
+  width:auto;
+  border: none;
+  padding: 1px;
+  left: 10px;
+  position: relative;
+}
 /* NEXT ITEM HERE */
 .content-title {
   font-size: 30px;
@@ -173,7 +258,7 @@ a {
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5)
+  background-color: var(--overlay-color);
 
 }
 
@@ -299,9 +384,78 @@ ALL MOVIES PAGE
   background-color:#ffffff;
 }
 
-/* .movie-card:hover .overview{
-  transform: translateY(0); 
+/* ANOTHER OPTION 
 } */
+#movies{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+}
+.all-mov {
+  padding: 10px;
+  border-radius: 3px;
+}
+.movie-box {
+  position: relative;
+  width: 250px;
+  height: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: #505050;
+}
+
+.movie-box-img {
+  width: 250px;
+  height: 350px;
+  background-color: #616161;
+}
+
+.movie-box .box-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  background: linear-gradient(8deg, hsl(240 17% 14% /74%) 14%,hsl(240 17% 14% /14%) 44%);
+  overflow: hidden;
+  color: var(--button-color);
+}
+.movie-title-1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.movie-type {
+  font-size: 0.9rem;
+  color:rgb(231, 99, 52);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.5px;
+  background-color: (--button-hover);
+}
+.movie .heading {
+  padding: 10px 14px;
+}
+
+.movie-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(247px, 1fr));
+  gap: 1.5rem;
+}
+
+.movie-box:hover{
+  transform: scale(1.05);
+}
+
+
+
+
 
 /* LOG IN PAGE */
 .bg-image-vertical {
@@ -316,4 +470,165 @@ ALL MOVIES PAGE
   .h-custom-2 {
     height: 50%;
   }
+}
+
+
+/*==================== 
+  ACTOR DETAIL PAGE 
+====================== */
+
+
+.container-actor {
+  height: auto;
+  overflow: hidden;
+  padding-top: 40px;
+}
+
+.a {
+  width: 300px; 
+  float: left;
+  background: rgb(223, 223, 223);
+  height: 1500px;
+}
+.a img {
+  width: 250px;
+  border-radius: 5px;
+}
+.a-image {
+  text-align: center;
+}
+.b {
+  width: auto;
+  overflow: hidden;
+  background: rgba(249, 254, 181, 0.899);
+  height: auto;
+  padding-left: 3%;
+}
+
+.person-info-title {
+  padding-left: 30px;
+  font-weight: 600;
+  font-size: 14;
+  padding-top: 5px;
+}
+
+.person-info-list {
+  list-style-type: None;
+  padding-left: 40px;
+}
+
+
+
+.b h1 {
+  font-weight: 800;
+}
+
+.b h3 {
+  font-weight: 500;
+  padding-top: 10px;
+}
+
+.acting ul {
+  list-style-type: None;
+}
+
+.acting a {
+  text-decoration: None;
+}
+.acting a:hover {
+  text-transform: bold;
+}
+
+.hero-slide-item:hover {
+  transform: scale(1.05);
+}
+
+/*==================== 
+  MOVIE DETAIL PAGE 
+====================== */
+.movie-detail-container{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.movie-detail-box {
+  height: 600px;
+  border-bottom: 1px solid var(--primaryColor);
+    background-position: right -200px top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.movie-detail-custom-bg {
+  background-image: linear-gradient(to right, rgba(10.5, 31.5, 31.5, 1) 150px, rgb(10 31 32 / 70%) 60%);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  height: inherit;
+}
+
+.movie-single-column {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  z-index: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-height: 600px;
+}
+
+#movie-small-header {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 1 1 0;
+}
+
+.poster-wrapper {
+  min-width: 300px;
+  width: 350px;
+  height: auto;
+  position: relative;
+  text-align: center;
+  max-height: 300px;
+  padding-top: 20px;
+}
+
+.poster-info {
+  display: flex;
+  position: relative;
+  width: max-content;
+  flex: 2 1 0;
+  flex-direction: column;
+  padding-left: 20px;
+  color: white;
+}
+
+poster-info h1 {
+  font-size: 4rem;
+}
+
+.movie-detail-body{
+  margin-top: 30px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.movie-detail-actor-all {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-detail-actor {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.movie-detail-actor-profile-img img {
+  max-width: 100px;
+}
+
+.movie-media{
+  margin-top: 30px;
+  padding-left: 5%;
+  padding-right: 5%;
 }

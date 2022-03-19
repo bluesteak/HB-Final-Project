@@ -10,4 +10,7 @@ $(document).ready(() => {
     margin: 10,
     navText: navText
     })
+
+    
 })
+

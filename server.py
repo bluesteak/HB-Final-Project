@@ -13,6 +13,7 @@ import crud
 import os
 import cruddetail
 
+
 app = Flask(__name__)
 app.secret_key = os.environ["SECRET_KEY"]
 
@@ -29,7 +30,8 @@ HOMEPAGE SECTION
 def homepage():
     """ Show homepage """
     asian_lead_movies = cruddetail.get_asian_lead()
-    return render_template("homepage.html",asian_lead_movies=asian_lead_movies)
+    feature = cruddetail.get_movie_by_id(1)
+    return render_template("homepage.html",asian_lead_movies=asian_lead_movies,feature=feature)
 
 
 # @app.route("/giveme")
@@ -42,7 +44,8 @@ def all_movies():
     """View all movies."""
 
     movies = crud.get_movies()
-    return render_template("all_movies.html", movies=movies)
+    asian_lead_movies=cruddetail.get_asian_lead()
+    return render_template("all_movies.html", movies=movies,asian_lead_movies=asian_lead_movies)
 
 @app.route("/actors")
 def all_actors():
@@ -60,9 +63,16 @@ ACTOR SECTION
 @app.route("/actors/<id>")
 def actor_detail(id):
     actor = crud.get_actor_by_id(id)
-    characters = crud.get_characters_from_actor(id)
-    character = crud.get_character_by_actor_id(id)
-    return render_template("actor_detail.html",actor=actor, character=character,characters=characters)
+    # characters = crud.get_characters_from_actor(id)
+    # character = crud.get_character_by_actor_id(id)
+    
+    char = cruddetail.get_char_from_actor(id)
+    count = cruddetail.count_char_from_actor(id)
+    lead_count = cruddetail.count_lead_char_from_actor(id)
+    remaining = count - lead_count
+    data = {'Role' : 'Percentage', 'Lead' : lead_count, 'Supporting' : remaining}
+	#print(data)
+    return render_template("actor_detail.html",actor=actor, char=char,count=count,lead_count=lead_count,data=data)
 
 
 """

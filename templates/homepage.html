@@ -2,15 +2,35 @@
 {% block title %}Homepage{% endblock %}
 {% block head %}{% endblock %}
 {% block body %}
+<!-- SEARCH BOX -->
 
-<!-- <div id="app"></div> -->
+<div class="search-box">
+	<div class="search-content">
+		<h3 class="search-title">Welcome!</h3>
+		<span class="search-overview">We have hundrends of movies and Asian and Pacific Islanders American actors/actresses to discover on this website. <br> It's my honor to showcase Asian representation in film and television.</span>
+	</div>
+	<div class="container-search">
+		
+		<form action="search" method="GET">
+		<div>
+			<div class="col-md-10">
+				<div class="input-group mb-3"> <input type="search" name="q" class="form-control input-text" placeholder="Search for a movie, person,..." >
+					<div class="input-group-append"> 		
+						<button class="btn" type="submit">
+							<span><i class='bx bx-search-alt-2 bx-sm'></i></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+	</div>
 
-<!-- 
-FEATURE MOVIE SECTION -->
-	
-	
+</div>	
+<!-- ASIAN LEAD MOVIE SECTION -->
+<h3 class="homepage-title">Asian Lead Movie</h3>
 <div class="hero-section">
-<h1>MOVIES WITH ASIAN LEAD</h1>	
+	
 	<div class="hero-slide">
 			
 		<div class="owl-carousel carousel-nav-center" id="movie-carousel">
@@ -35,14 +55,21 @@ FEATURE MOVIE SECTION -->
 		
 </div>
 	
-<div class="search">
-	<form action="search" method="GET">
-		<p>
-			<input type="search" name="q" placeholder="Search here..."><button type="submit">Search</button>
-		</p>
-	
-		</form>
-</div> 
-	
+<!-- FEATURE -->
+<h3 class="homepage-title">Featured Movie</h3>
+<div class="container1">
+		<div class="content-container">
+		{% set backdrop_link ="https://image.tmdb.org/t/p/w1280" ~ feature.back_drop ~ "" %}
+		<div class="feature-content" style="background: linear-gradient(to bottom, #ffffff0d, #f8f8f8), url({{ backdrop_link}});background-size: cover;">
+			
+			<div class="feature-title">{{ feature.movie_title}}</div>
+			<div class="feature-item">Overview:<button class="trailer-button">Watch Trailer<i class='bx bx-play bx-flashing bx-sm bx-fw' ></i></button><br/> <br/>
+				{{ feature.overview }} </div>
+			
+		</div>
+		</div>
+</div>	
+
+<!-- TESTING -->
 
 {% endblock %}

@@ -2,10 +2,14 @@
 {% block title %}Search Result {% endblock %}
 
 {% block body %}
-You can see your search result here
+Here is your search result:
+<div class="search-result">
 {% for movie in movies %}
-{{ movie.movie_title }}
+<h3>{{ movie.movie_title }}</h3>
+{% set poster_link ="https://image.tmdb.org/t/p/w342" ~ movie.poster ~ "" %}
+<a href="/movies/{{ movie.id}}"><img src="{{ poster_link }}"></a>
 {% endfor %}
+</div>
 
 {% endblock %}
 
