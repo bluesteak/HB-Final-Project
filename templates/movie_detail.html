@@ -73,7 +73,7 @@
 		</div>
   </div>
   
-</div>
+
 
 <!-- MOVIE BODY -->
 <div class="movie-detail-body">
@@ -107,10 +107,12 @@
     <p>{% set trailer_link = "http://youtube.com/embed/" ~ movie.watch_link ~ "" %}</p>
     <iframe width="560" height="315" src="{{ trailer_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     {% endif %}
+    <div style="height:50px;"> </div>
   </div>
 </div>
 </div>
-
+</div>
+</div>
 {% endblock %}
 
 

@@ -32,10 +32,10 @@ body {
 }
 
 .flashed {
-  color: rgb(255, 196, 0);
+  color: var(--text-color);
   text-align: center;
   font-size:medium;
-  background-color: rgba(255, 0, 0, 0.116);
+  background-color: var(--button-hover);
 }
 /* a {
   text-decoration: none;
@@ -88,9 +88,9 @@ footer ul{  padding-left: 0;  list-style: none;}
 .footer-copyright nav ul li { border-left: 1px solid #505050; display: inline-block;  line-height: 12px;  margin: 0;  padding: 0 8px;}
 .footer-copyright nav ul li a{  color: #969696;}
 .footer-copyright nav ul li:first-child { border: medium none;  padding-left: 0;}
-.footer-copyright p { color: rgb(244 185 25); margin: 2px 0 0;}
+.footer-copyright p { color: var(--text-color); margin: 2px 0 0;}
 .typo-light {
-  color: rgb(244 185 25);
+  color: var(--text-color);
   text-align: center;
 }
 .footer-title {
@@ -234,7 +234,7 @@ footer ul{  padding-left: 0;  list-style: none;}
   color: var(--main-color);
   text-shadow: var(--main-color);
   padding: 1px;
-  top: 30%;
+  top: 20%;
   text-align: left;
   left: 3%;
 }
@@ -244,7 +244,7 @@ footer ul{  padding-left: 0;  list-style: none;}
   position: relative;
   margin-right: 40%;
   padding-inline:inherit;
-  top: 33%;
+  top: 20%;
   margin-left: 3%;
   font-size: 15px;
 

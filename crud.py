@@ -77,12 +77,12 @@ def get_tmdb_ids():
 def get_movies():
     """Return all movies."""
 
-    return Movie.query.all()
+    return Movie.query.order_by(Movie.id).all()
 
 def get_actors():
     """Return all movies."""
 
-    return Actor.query.all()
+    return Actor.query.order_by(Actor.id).all()
 
 def get_characters_from_actor(id):
     """Return all characters by actor Id."""
