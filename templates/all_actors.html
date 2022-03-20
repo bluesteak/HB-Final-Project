@@ -3,20 +3,7 @@
 
 {% block body %}
 
-  <h2>The list of Actors</h2>
-<!-- <ul>
-  {% for actor in actors %}
-  
-  <a href="/actors/{{ actor.id }}"> <li> {{ actor.actor_name }}</a></li>
-
-  <li>{{ actor.biography }}</li>
-  <li><img src="{{ actor.headshot }}"></li>
-  <li></li>
-
-  
-{% endfor %}
-</ul> -->
-
+<div class="all-page-container">
 <section class="movie container" >
   <div class="heading">
     <h3 class="homepage-title">Actors and Actresses</h3>
@@ -25,13 +12,12 @@
       {% for actor in actors %}
         <!-- movie box -->
       <div class="all-mov">
-      <a href="/actors/{{ actor.id }}"><div class="movie-box">
+      <div class="movie-box">
         <img src="{{ actor.headshot }}" alt="" class="movie-box-img">
         
         <div class="box-text">
           <h2 class="movie-title-1">{{ actor.actor_name }}</h2>
-          <a href="#" class="watch-btn play-btn">
-            <i class='bx bx-right-arrow' ></i>
+          <a href="/actors/{{actor.id}}"><div class="rating-box"><span class="movie-type">See Detail</span></div></a>
           </a>
         </div>
       </a>
@@ -44,4 +30,5 @@
     </div>
 </div>
 </section>
+</div>
 {% endblock %}

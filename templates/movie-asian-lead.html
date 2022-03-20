@@ -1,0 +1,26 @@
+{% extends 'movies.html' %}
+{% block title %}Cannes Pineapple {% endblock %}
+
+{% block body %}
+<div id="movie-card-section">
+    {% for c in asian_lead_movies %}
+    <div class="movie-card-main">
+      <div class="movie-card">
+       {% set poster_link ="https://image.tmdb.org/t/p/w342" ~ c.movie.poster ~ "" %}
+        <img src="{{ poster_link }}">
+        {% if poster_link == "https://image.tmdb.org/t/p/w342None" %}
+        <img src="/static/img/coming-soon.jpeg">
+        {% endif%}
+        <div class="movie-info"><h4>{{ c.movie.movie_title }}</h4>
+          <span>{{ movie.c.vote_average }}</span>
+        </div>
+  
+        <div class="overview">
+          <h5>Overview:</h5>
+          {{ movie.c.overview }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

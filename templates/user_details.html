@@ -3,32 +3,29 @@
 <!-- VERSION 2 -->
 {% extends "base.html" %}
 {% block body %}
-
-    <div class="content-section">
-      <div class="media">
-        <img class="rounded-circle account-img" src="/static/img/profile-icon.png">
-        <div class="media-body">
-          <h2 class="account-heading">{{ current_user.name }}</h2>
-          <p class="text-secondary">{{ current_user.email }}</p>
-        </div>
+<div class="all-page-container">
+    <div class="user-header">
+      <div class="user-header-img">
+        <img class="rounded-circle account-img" src="/static/img/profile-icon.png"></div>
+      <div class="user-header-body">
+          <h2>Name: {{ current_user.name }}</h2>
+          <h3>Email: {{ current_user.email }}</h3>
       </div>
     </div>
     <div class="update-password-form">
         <form id="updatePassword" method="POST">
-            <h1>Change Password</h1>
+            <h3 class="homepage-title">Change Password</h1>
             <div class="FormRow">
               <label for="email">Current Email: {{ current_user.email }}</label>
             </div>
             <div class="FormRow">
-              <label for="currentpassword">Current Password:</label>
-              <input type="password" id="currentpassword" name="currentpassword">
+              <input type="password" id="currentpassword" name="currentpassword" placeholder="Current Password">
             </div>
             <div class="FormRow">
-                <label for="newpassword">New Password:</label>
-                <input type="password" id="newpassword" name="newpassword">
+                <input type="password" id="newpassword" name="newpassword" placeholder="New Password">
             </div>
-            <div class="FormRow" id="LoginButtonDiv">
-                <button type="submit">Submit</button>
+            <div class="FormRow">
+                <button type="submit" class="trailer-button"> Submit </button>
             </div>
         
             </ul>
@@ -36,17 +33,19 @@
         
     </div>
     <div> 
-      <h2>Movie I have rated:</h2>
-      <ul>
+      <h3 class="homepage-title">Movie I have rated</h3>
+      <ul class="person-info-list">
       {% for movie in movie_list %}
       <li>{{ movie.movie_title }}</li>
       {% endfor %}
       </ul>
 
-      <h2>Movie in my favorite list:</h2>
+      <h3 class="homepage-title">Movie in my favorite list</h3>
+      <ul class="person-info-list">
       {% for fav in favorite_list %}
       <li>{{ fav.movie_title }}</li>
       {% endfor %}
- 
-
+      </ul>
+</div>
+</div>
 {% endblock %}

@@ -5,63 +5,9 @@
 {% endblock %}
 
 {% block body %}
-<!-- <div>
-  {% for c in character %}
-<h1>{{ c.movie.movie_title }}</h1>
-<ul>
-  <li>Release Date:{{ c.movie.release_date.strftime('%Y-%m-%d') }}</li>
-  <li>Movie Overview: {{ c.movie.overview }}</li>
-  <li>{{ c.movie.poster }}</li>
-  <li> Watch Trailer: {{ c.movie.watch_link }}</li> 
-  <li> Genre {{ c.movie.genre }}</li> 
-    {% if c.movie.watch_link %}
-    <p>{% set trailer_link = "http://youtube.com/embed/" ~ c.movie.watch_link ~ "" %}</p>
-    <iframe width="560" height="315" src="{{ trailer_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    {% endif %}
-</ul>
-{% endfor %}
-<div class="rate-movie">
-<h2>Rate this movie</h2>
-
-{% if session.get('user_id') %}
-<form action="/movies/{{ movie.id }}/ratings" method="POST">
-  <p>
-    Rating:
-    <select name="rating">
-      <option value="">Select rating</option>
-      {% for num in range(6) %}
-        <option value="{{ num }}">{{ num }}</option>
-      {% endfor %}
-    </select>
-  </p>
-  <p><input type="submit"></p>
-</form>
-
-{% else   %}
-<p>Please log in to rate this movie</p>
-{% endif %}
-</div>
-<div class="add-favorite-movie">
-  <h2>Add To Favorite</h2>
-  
-  {% if session.get('user_id') %}
-  <form action="/movies/{{ movie.id }}/favorite" method="POST">
-    <p>
-      Add to Favorite
-      <select name="fav">
-        <option value="">Add</option>
-      </select>
-    </p>
-    <p><input type="submit"></p>
-  </form>
-  
-  {% else   %}
-  <p>Please log in to rate this movie</p>
-  {% endif %}
-</div>
-</div>  -->
 
 <!-- HEADER -->
+<div class="all-page-container">
 <div class="movie-detail-container">
   {% set backdrop_link ="https://image.tmdb.org/t/p/original" ~ movie.back_drop ~ "" %}
   {% set poster_link ="https://image.tmdb.org/t/p/w342" ~ movie.poster ~ "" %}
@@ -80,6 +26,7 @@
             <div class="poster-info-b">
               <h3>Overview</h3>
               <span>{{movie.overview}}</span></div>
+               <!-- RATING SYSTEM -->
               <div class="rate-movie">
                 <h2>Rate this movie</h2>
                 
@@ -90,31 +37,32 @@
                     <select name="rating">
                       <option value="">Select rating</option>
                       {% for num in range(6) %}
-                        <option value="{{ num }}">{{ num }}</option>
+                        <option value="{{ num }}">{{num }}<i class='bx bx-star'></i></option>
                       {% endfor %}
                     </select>
                   </p>
-                  <p><input type="submit"></p>
+                  <p><input type="submit" class="trailer-button"></p>
                 </form>
-                
                 {% else   %}
                 <p>Please log in to rate this movie</p>
                 {% endif %}
                 </div>
-                <div class="add-favorite-movie">
+                <section id="add-favorite-movie">
                   <h2>Add To Favorite</h2>
                   
                   {% if session.get('user_id') %}
                   <form action="/movies/{{ movie.id }}/favorite" method="POST">
-                    <p>
+                    <!-- <p>
                       Add to Favorite
                       <select name="fav">
-                        <option value="">Add</option>
                       </select>
+                    </p> -->
+                    <p>
+                     <button id="favorite-button" class="trailer-button">Add To Favorite</button>
                     </p>
-                    <p><input type="submit"></p>
+                    <!-- <p><input type="submit">Add To Favorite</p> -->
                   </form>
-                  
+
                   {% else   %}
                   <p>Please log in to rate this movie</p>
                   {% endif %}
@@ -129,7 +77,7 @@
 
 <!-- MOVIE BODY -->
 <div class="movie-detail-body">
-  <h3 class="heading-title">Asian Casts:</h3>
+  <h3 class="homepage-title">Asian Casts:</h3>
   {% for c in character %}
   <div class="movie-detail-actor-all">
     <div class="movie-detail-actor">
@@ -145,27 +93,24 @@
 
 
     </div>
-
+      
     </div>
   {% endfor %}
   </div>
 
 </div>
-
+<!-- MEDIA -->
 <div class="movie-media">
+  {% if movie.watch_link %}
   <div class="trailer-link">
-  <h3>Download Media:</h3>  
-    <button>Fullsize poster</button>
-
-
-
-    {% if movie.watch_link %}
-  <h3>Watch Trailer:</h3>
+  <h3 class="homepage-title">Media - Trailer</h3>
     <p>{% set trailer_link = "http://youtube.com/embed/" ~ movie.watch_link ~ "" %}</p>
     <iframe width="560" height="315" src="{{ trailer_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     {% endif %}
   </div>
 </div>
+</div>
+
 {% endblock %}
 
 

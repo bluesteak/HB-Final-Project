@@ -3,7 +3,7 @@
 {% block head %}{% endblock %}
 {% block body %}
 <!-- SEARCH BOX -->
-
+<div class="homepage-container">
 <div class="search-box">
 	<div class="search-content">
 		<h3 class="search-title">Welcome!</h3>
@@ -27,6 +27,7 @@
 	</div>
 
 </div>	
+
 <!-- ASIAN LEAD MOVIE SECTION -->
 <h3 class="homepage-title">Asian Lead Movie</h3>
 <div class="hero-section">
@@ -60,16 +61,18 @@
 <div class="container1">
 		<div class="content-container">
 		{% set backdrop_link ="https://image.tmdb.org/t/p/w1280" ~ feature.back_drop ~ "" %}
-		<div class="feature-content" style="background: linear-gradient(to bottom, #ffffff0d, #f8f8f8), url({{ backdrop_link}});background-size: cover;">
+		<div class="feature-content" style="background: linear-gradient(to right, #0000006b, #00000066), url({{ backdrop_link}});background-size: cover;">
 			
 			<div class="feature-title">{{ feature.movie_title}}</div>
-			<div class="feature-item">Overview:<button class="trailer-button">Watch Trailer<i class='bx bx-play bx-flashing bx-sm bx-fw' ></i></button><br/> <br/>
-				{{ feature.overview }} </div>
+			
+			<div class="feature-item">Overview:<br/> <br/>
+				{{ feature.overview }}<button class="trailer-button" onclick="window.location.href='/movies/{{feature.id}}';" value="See Detail">See Detail<i class='bx bx-play bx-flashing bx-sm bx-fw' ></i></button></div>
 			
 		</div>
 		</div>
-</div>	
-
+</div>
+<div style="height:50px;"> </div>	
+</div>
 <!-- TESTING -->
 
 {% endblock %}

@@ -12,5 +12,20 @@ $(document).ready(() => {
     })
 
     
-})
+});
+
+
+const button = document.querySelector('#login-button-2');
+var logIn = false;
+button.addEventListener('click', function() { 
+    if (logIn) {
+        button.innerText = "Logged In";
+    } else {
+        button.innerText = 'Log In';
+    }
+    logIn = !logIn;       
+});
+
+
+
 

@@ -178,7 +178,6 @@ def login_user():
     #Wrong email and password
         flash("Wrong email or password. Please try again")
         return redirect("/login")
-
     else:
     #Log in user
         session["user_name"] = user.name
@@ -205,26 +204,25 @@ USER ROUTE SECTION
 
 @app.route("/user", methods = ["POST", "GET"])
 def user():
-    if "user" in session:
+    if request.method == "GET":
         user = session["user"]
-        current_user = crud.get_user_by_email(user)
-        movie_list = cruddetail.get_movie_by_user(current_user.user_id)
-        favorite_list = cruddetail.get_fav_by_user(current_user.user_id)
-        current_password = current_user.password
-        new_password = request.form.get("newpassword")
-        if request.method == "POST":
-            if current_user.password == request.form.get("currentpassword"):
-                current_user.password = request.form.get("newpassword")
-                db.session.commit()
-                flash("Updated password!")
-            else:
-                flash("Incorrect current password. Please try again")
+        if "user" in session:
+            current_user = crud.get_user_by_email(user)
+            movie_list = cruddetail.get_movie_by_user(current_user.user_id)
+            favorite_list = cruddetail.get_fav_by_user(current_user.user_id)
+            current_password = current_user.password
+            new_password = request.form.get("newpassword")
+            if request.method == "POST":
+                if current_user.password == request.form.get("currentpassword"):
+                    current_user.password = request.form.get("newpassword")
+                    db.session.commit()
+                    flash("Updated password!")
+                else:
+                    flash("Incorrect current password. Please try again")
         
-
-        return render_template("user_details.html",current_user=current_user,movie_list=movie_list,favorite_list=favorite_list)
-    else:
-        flash(f"Please login to view your account!")
-        return redirect(url_for("login"))
+            return render_template("user_details.html",current_user=current_user,movie_list=movie_list,favorite_list=favorite_list)
+        elif "user" not in session:
+            return redirect(url_for("login"))
     # """Show details on a particular user."""
     # show_user = crud.get_user_by_email(usr)
   
@@ -246,9 +244,7 @@ def create_favorite(movie_id):
         db.session.commit()
 
         flash(f"You have added this movie to your favorite list.")
-
-    # return redirect(f"/movies/{movie_id}")  
-    return redirect(request.referrer)
+        return redirect(f"/movies/{movie_id}")  
 
 
 """
@@ -261,6 +257,7 @@ LOG OUT SECTION
 def logout():
     """Log and and delete session"""
     del session["user_id"]
+    del session["user"]
 
     flash("You've logged out!")
     return redirect("/")

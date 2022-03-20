@@ -33,13 +33,14 @@
     
   }
 </script>
+<div class="all-page-container">
 <div class="container-actor">
   <div class="a">
     <div class="a-image">
       <img src=" {{ actor.headshot }}">
     </div>
     <div class="a-personal-info">
-      <h4 class="person-info-title">Personal Info</h4>
+      <h3 class="person-info-title">Personal Info</h3>
       <ul class="person-info-list">
         <li><b>Gender:</b> {{ actor.gender }}</li>
         <li><b>Date Of Birth:</b> {{ actor.dob }}</li>
@@ -48,14 +49,14 @@
       </ul>
     </div>
     <div class="a-credit-info">
-      <h4 class="person-info-title">Credit Info</h4>
+      <h3 class="person-info-title">Credit Info</h3>
       <ul class="person-info-list">
         <li><b>Known For:</b> {{ actor.known_for }}</li>
         <li><b>Known Lead Role:</b> {{ lead_count }}</li>
         <li><b>Known Credit:</b>  {{ count }}</li>       
       </ul>
       <div class="chart" style="width: 290px">
-        <h3 style="text-align:center;">Role Type Per Actor</h3>
+        <h3 class="person-info-title">Role Type Per Actor</h3>
         <div id="piechart_3d" style="width: 300px; height: 300px;"></div>
     </div>
   </div>
@@ -113,5 +114,6 @@
 
    
   </div>
+</div>
 </div>
 {% endblock %}

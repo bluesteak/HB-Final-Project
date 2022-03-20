@@ -4,7 +4,7 @@
 {% block body %}
 
 <!-- OPTION 1 -->
-<section class="movie container" >
+<section class="all-page-container" >
   <div class="heading">
     <h3 class="homepage-title">Movies and Shows</h3>
     <div class="all-movies" >
@@ -18,9 +18,8 @@
         
         <div class="box-text">
           <h2 class="movie-title-1">{{ movie.movie_title }}</h2>
-          <span class="movie-type">{{ movie.vote_average }}</span>
-          <a href="#" class="watch-btn play-btn">
-            <a href="/movies/{{movie.id}}"><i class='bx bx-right-arrow' ></i></a>
+          <a href="/movies/{{movie.id}}"><div class="rating-box"><span class="movie-type">See Detail</span></div></a>
+        
           </a>
         </div>
       </div>
@@ -32,4 +31,5 @@
     </div>
 </div>
 </section>
+
 {% endblock %}

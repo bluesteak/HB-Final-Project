@@ -31,6 +31,12 @@ body {
   margin: 0px;
 }
 
+.flashed {
+  color: rgb(255, 196, 0);
+  text-align: center;
+  font-size:medium;
+  background-color: rgba(255, 0, 0, 0.116);
+}
 /* a {
   text-decoration: none;
 } */
@@ -58,6 +64,11 @@ body {
   left: 0;
   width: 100%;
   z-index: 50;
+}
+
+.navbar {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 /*==================== 
@@ -93,7 +104,7 @@ footer ul{  padding-left: 0;  list-style: none;}
   size: 500px;
   height: 200px;
   bottom: 10;
-  background-image: url(/static/img/cover.jpeg), linear-gradient( to top,rgb(254 254 254),rgb(246 221 73 / 80%));
+  background-image: url(/static/img/cover.jpeg), linear-gradient( to top,rgb(254 254 254),rgb(246 221 73));
   background-blend-mode: overlay;
   background-size: cover;
 }
@@ -122,6 +133,9 @@ footer ul{  padding-left: 0;  list-style: none;}
 .btn:hover {
   background-color: var(--button-hover);
 }
+.btn-info {
+  background-color: var(--button-color);
+}
 
 .search-content {
   color: var(--text-color);
@@ -140,7 +154,12 @@ footer ul{  padding-left: 0;  list-style: none;}
 .form-control {
   border: 1px solid rgb(249, 0, 0);
 } */
-
+.homepage-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  background-image: url("/static/img/bg-1b.png");
+  background-size: cover;
+}
 /*==================== 
   HOMEPAGE CAROSEUL
 ====================== */
@@ -187,12 +206,12 @@ footer ul{  padding-left: 0;  list-style: none;}
 
 .carousel-nav-center .owl-nav .owl-prev {
   position: absolute;
-  left: 5px;
+  left: 1px;
 }
 
 .carousel-nav-center .owl-nav .owl-next {
   position: absolute;
-  right: 5px;
+  right: 1px;
 } 
 
 .owl-nav button i{
@@ -212,7 +231,7 @@ footer ul{  padding-left: 0;  list-style: none;}
 .feature-title{
   position: relative;
   font-size:50px;
-  color: var(--text-color);
+  color: var(--main-color);
   text-shadow: var(--main-color);
   padding: 1px;
   top: 30%;
@@ -221,7 +240,7 @@ footer ul{  padding-left: 0;  list-style: none;}
 }
 .feature-item {
   text-align: left;
-  color:var(--text-color);
+  color:var(--main-color);
   position: relative;
   margin-right: 40%;
   padding-inline:inherit;
@@ -232,10 +251,12 @@ footer ul{  padding-left: 0;  list-style: none;}
 }
 
 .homepage-title {
-  padding: 2%;
-  left: 10px;
+  padding: 3%;
+  left: 5px;
   font-size:30px;
   text-decoration:overline;
+  text-decoration-color: var(--button-color);
+  text-decoration-thickness: 0.5rem;
 }
 .trailer-button {
   background-color: var(--button-color);
@@ -246,6 +267,12 @@ footer ul{  padding-left: 0;  list-style: none;}
   padding: 1px;
   left: 10px;
   position: relative;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.trailer-button:hover {
+  background-color: #e7ba3e;
 }
 /* NEXT ITEM HERE */
 .content-title {
@@ -272,28 +299,34 @@ footer ul{  padding-left: 0;  list-style: none;}
 
 
 .account-img {
-  height: 10%;
-  width: 10%;
-  margin-left: 50px;
-  margin-bottom: 16px;
+  width: 100%;
 }
 
-.account-heading {
-  color: red;
+.user-header-body {
+  color: rgb(23, 23, 23);
   font-size: 30px;
+  padding-left: 10px;
 
 }
-.media-body {
+.user-header-img {
+  width: 20%;
+}
+.user-header-body h2 h3 {
   font-size: 10;
-  color: var(--main-color);
+  color: var(--text-color);
+  padding-left: 10px;
 }
 
-.content-section {
-  background: #42922e;
+.user-header {
+  background: var(--body-bg);
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .backdrop-container {
@@ -337,6 +370,11 @@ footer ul{  padding-left: 0;  list-style: none;}
 /************ 
 ALL MOVIES PAGE 
 ************/
+.all-page-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  background-image: url("/static/img/bg-1b.png");
+}
 #movie-card-section{
   width: 100%;
   display: flex;
@@ -392,6 +430,8 @@ ALL MOVIES PAGE
   flex-wrap: wrap;
   flex-direction: row;
   align-items: stretch;
+  background-image: inherit;
+  justify-content: center;
 }
 .all-mov {
   padding: 10px;
@@ -432,26 +472,42 @@ ALL MOVIES PAGE
 }
 .movie-type {
   font-size: 0.9rem;
-  color:rgb(231, 99, 52);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   letter-spacing: 0.5px;
   background-color: (--button-hover);
+  color: var(--text-color);
+}
+.rating-box {
+  width: 60px;
+  height: 30px;
+  padding-top: 2%;
+  border-radius: 10%;
+  background-color: var(--button-color);
+  box-shadow:#e1e1e1;
+}
+.box-text a {
+  text-decoration: None;
+}
+
+.box-text a:hover {
+  transform: scale(1.05);
 }
 .movie .heading {
   padding: 10px 14px;
 }
-
+.movie-container {
+  margin-left: 5%;
+  margin-right 5%;
+}
 .movie-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(247px, 1fr));
   gap: 1.5rem;
 }
 
-.movie-box:hover{
-  transform: scale(1.05);
-}
+
 
 
 
@@ -465,7 +521,10 @@ ALL MOVIES PAGE
   background-position: right center;
   background-size: auto 100%;
 }
-
+#LoginButtonDiv
+{
+  background-color: #f6dd49;
+}
 @media (min-width: 1025px) {
   .h-custom-2 {
     height: 50%;
@@ -487,7 +546,6 @@ ALL MOVIES PAGE
 .a {
   width: 300px; 
   float: left;
-  background: rgb(223, 223, 223);
   height: 1500px;
 }
 .a img {
@@ -500,7 +558,7 @@ ALL MOVIES PAGE
 .b {
   width: auto;
   overflow: hidden;
-  background: rgba(249, 254, 181, 0.899);
+  background: #ffc10712;
   height: auto;
   padding-left: 3%;
 }
@@ -509,7 +567,10 @@ ALL MOVIES PAGE
   padding-left: 30px;
   font-weight: 600;
   font-size: 14;
-  padding-top: 5px;
+  padding-top: 40px;
+  text-decoration: overline;
+  text-decoration-color: var(--button-color);
+  text-decoration-thickness: 0.3rem;
 }
 
 .person-info-list {
@@ -521,11 +582,15 @@ ALL MOVIES PAGE
 
 .b h1 {
   font-weight: 800;
+  
 }
 
 .b h3 {
   font-weight: 500;
-  padding-top: 10px;
+  padding-top: 40px;
+  text-decoration: overline;
+  text-decoration-color: var(--button-color);
+  text-decoration-thickness: 0.3rem;
 }
 
 .acting ul {
@@ -546,10 +611,7 @@ ALL MOVIES PAGE
 /*==================== 
   MOVIE DETAIL PAGE 
 ====================== */
-.movie-detail-container{
-  padding-left: 5%;
-  padding-right: 5%;
-}
+
 .movie-detail-box {
   height: 600px;
   border-bottom: 1px solid var(--primaryColor);
@@ -621,14 +683,37 @@ poster-info h1 {
 .movie-detail-actor {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  margin-top: 15px;
+  font-size: 20px;
+  padding-left: 5%;
+}
+
+.movie-detail-actor ul {
+  list-style-type: none;
+}
+.movie-detail-actor-card {
+  padding-top: 7%;
 }
 .movie-detail-actor-profile-img img {
-  max-width: 100px;
+  max-width: 150px;
 }
 
 .movie-media{
   margin-top: 30px;
   padding-left: 5%;
   padding-right: 5%;
+}
+
+
+/*==================== 
+  USER DETAIL
+====================== */
+
+.update-password-form input {
+  display: block;
+  margin: 6px 0px 6px 2px;
+}
+
+.FormRow {
+  padding-left: 5%;
 }
