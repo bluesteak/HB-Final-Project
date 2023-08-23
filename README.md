@@ -1,6 +1,6 @@
 <img src="/static/img/logo_1.png" alt="Cannes Pineapple logo" width="300px"/>
-<h2>Cannes Pineapple</h2>
-Cannes Pineapple (CP) is a responsive web application created with the purpose of viewing information about Asian American actors and their movies. CP showcases Asian American actors and celebrates Asian representation in film. CP maintains a database of movie and actor information, including movie title, release year, character, actor, etc. User are able to create an account and create a movie or add to their favorite list. The movie data is obtained from TMDB API which is fetched and stored into SQL database. 
+<h2>Canned Pineapple</h2>
+Canned Pineapple (CP) is a responsive web application created with the purpose of viewing information about Asian American actors and their movies. CP showcases Asian American actors and celebrates Asian representation in film. CP maintains a database of movie and actor information, including movie title, release year, character, actor, etc. User are able to create an account and create a movie or add to their favorite list. The movie data is obtained from TMDB API which is fetched and stored into SQL database. 
 
 
 
